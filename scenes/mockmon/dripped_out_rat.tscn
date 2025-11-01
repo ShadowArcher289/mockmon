@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://blx24epx1ubvt"]
+[gd_scene load_steps=2 format=3 uid="uid://blx24epx1ubvt"]
+
+[ext_resource type="Texture2D" uid="uid://eo8ec1r0fl00" path="res://icon.svg" id="1_n4wgy"]
 
 [node name="DrippedOutRat" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-3, -2)
+texture = ExtResource("1_n4wgy")
