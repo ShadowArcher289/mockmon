@@ -1,11 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://elgqc5fl78tt"]
+[gd_scene load_steps=6 format=3 uid="uid://elgqc5fl78tt"]
 
 [ext_resource type="Texture2D" uid="uid://eo8ec1r0fl00" path="res://icon.svg" id="1_nxi5t"]
 [ext_resource type="Script" uid="uid://bkyug27h6ed2n" path="res://scripts/npc_trainer.gd" id="1_qa06k"]
+[ext_resource type="PackedScene" uid="uid://blx24epx1ubvt" path="res://scenes/mockmon/dripped_out_rat.tscn" id="3_xmhu2"]
+[ext_resource type="PackedScene" uid="uid://c7uwuvrwffju5" path="res://scenes/mockmon/guy_in_a_cloak.tscn" id="4_vpq25"]
+[ext_resource type="PackedScene" uid="uid://c0jarsdt2wjtd" path="res://scenes/mockmon/literal_rock.tscn" id="5_87etf"]
 
-[node name="NpcTrainer" type="Node2D"]
+[node name="NpcTrainer" type="Node2D" node_paths=PackedStringArray("mockmon_party", "current_mockmon")]
 script = ExtResource("1_qa06k")
+mockmon_party = [NodePath("DrippedOutRat"), NodePath("GuyInACloak"), NodePath("LiteralRock")]
+current_mockmon = NodePath("DrippedOutRat")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(302, 306)
 texture = ExtResource("1_nxi5t")
+
+[node name="DrippedOutRat" parent="." instance=ExtResource("3_xmhu2")]
+position = Vector2(-593, 50)
+
+[node name="GuyInACloak" parent="." instance=ExtResource("4_vpq25")]
+position = Vector2(-605, 286)
+
+[node name="LiteralRock" parent="." instance=ExtResource("5_87etf")]
+position = Vector2(-564, 631)
