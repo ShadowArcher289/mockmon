@@ -8,7 +8,7 @@
 
 [node name="NpcTrainer" type="Node2D" node_paths=PackedStringArray("mockmon_party", "current_mockmon")]
 script = ExtResource("1_qa06k")
-mockmon_party = [NodePath("DrippedOutRat"), NodePath("GuyInACloak"), NodePath("LiteralRock")]
+mockmon_party = [NodePath("DrippedOutRat"), NodePath("LiteralRock")]
 current_mockmon = NodePath("DrippedOutRat")
 
 [node name="Icon" type="Sprite2D" parent="."]

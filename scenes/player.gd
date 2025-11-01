@@ -3,10 +3,10 @@ extends CharacterBody2D
 @export var move_speed : float = 100
 @export var run_speed : float = 150
 @onready var animated_sprite = $AnimatedSprite2D
-@
-
+@export var mockmon_party: Array[Node2D] = [];
+@export var current_mockmon: Node2D;
 func _ready() -> void:
-	
+	pass
 
 func _process(_delta):
 	#Get input direction
