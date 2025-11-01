@@ -9,13 +9,9 @@ func _process(_delta):
 	var animated_sprite
 	var input_direction = Vector2(
 		Input.get_axis("left", "right"),
-		Input.get_axis("down","up")
+		Input.get_axis("up", "down")
 		)
 		
-	if(input_direction.x > 0) :
-		animated_sprite.flip_h = false
-	else :
-		animated_sprite.flip_h = true
 		
 	print(input_direction)
 	 
