@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b80hedxmrftdl"]
+
+[ext_resource type="Script" uid="uid://ymyk54nlc62h" path="res://scripts/world.gd" id="1_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://elgqc5fl78tt" path="res://scenes/npc_trainer.tscn" id="2_4wyf3"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_rwgxs")
+
+[node name="NpcTrainer" parent="." instance=ExtResource("2_4wyf3")]
+position = Vector2(486, 109)
