@@ -6,12 +6,16 @@ var do_a_flip = move.new("Psychic", 40, "Special", 10, 90);
 
 var moves: Array[move] = [];
 
+const TYPE : Array[String] = ["Steel", "Fire"];
+
 const MAX_HP = 120; # base sats
 const BASE_ATK = 10;
 const BASE_DEF = 20;
 const BASE_SPEC_ATK = 30;
 const BASE_SPEC_DEF = 30;
 const BASE_SPEED = 50;
+
+const WEAKNESSES: Array[String] = ["Water, Ground, Fighting"];
 
 var currentHp = MAX_HP;
 

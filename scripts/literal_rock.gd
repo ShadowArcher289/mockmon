@@ -6,12 +6,16 @@ var what_rocks_do = move.new("Rock", 0, "Physical", 30, 80);
 
 var moves: Array[move] = [];
 
+const TYPE : Array[String] = ["Rock"];
+
 const MAX_HP = 120; # base sats
 const BASE_ATK = 10;
 const BASE_DEF = 20;
 const BASE_SPEC_ATK = 30;
 const BASE_SPEC_DEF = 30;
 const BASE_SPEED = 50;
+
+const WEAKNESSES: Array[String] = ["Water", "Ground", "Grass"]
 
 var currentHp = MAX_HP;
 
