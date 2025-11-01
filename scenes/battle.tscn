@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cd73d42b80s57"]
+[gd_scene load_steps=5 format=3 uid="uid://cd73d42b80s57"]
 
 [ext_resource type="Script" uid="uid://dcspi46o52gy1" path="res://scripts/battle.gd" id="1_dn72j"]
+[ext_resource type="PackedScene" uid="uid://5k07bj3wni8h" path="res://scenes/player.tscn" id="2_p1qf1"]
+[ext_resource type="PackedScene" uid="uid://c7jpgjkp1nlkp" path="res://scenes/npc_trainer.tscn" id="3_a12nh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dn72j"]
 
@@ -9,3 +11,9 @@ script = ExtResource("1_dn72j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dn72j")
+
+[node name="Player" parent="." instance=ExtResource("2_p1qf1")]
+position = Vector2(73, 205)
+
+[node name="NpcTrainer" parent="." instance=ExtResource("3_a12nh")]
+position = Vector2(306, 150)
