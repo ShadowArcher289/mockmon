@@ -1,79 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b80hedxmrftdl"]
+[gd_scene load_steps=3 format=3 uid="uid://b80hedxmrftdl"]
 
 [ext_resource type="Script" uid="uid://ymyk54nlc62h" path="res://scripts/world.gd" id="1_f3sb7"]
-[ext_resource type="Texture2D" uid="uid://vfj82j4iwy7o" path="res://sprites/Main Character Male.png" id="2_fj7yv"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tlwt5"]
-atlas = ExtResource("2_fj7yv")
-region = Rect2(52, 28, 26, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aqk2v"]
-atlas = ExtResource("2_fj7yv")
-region = Rect2(78, 28, 26, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_036b0"]
-atlas = ExtResource("2_fj7yv")
-region = Rect2(104, 28, 26, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dwbse"]
-atlas = ExtResource("2_fj7yv")
-region = Rect2(130, 28, 26, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pkg7o"]
-atlas = ExtResource("2_fj7yv")
-region = Rect2(156, 28, 26, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gbfbk"]
-atlas = ExtResource("2_fj7yv")
-region = Rect2(182, 28, 26, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ioo17"]
-atlas = ExtResource("2_fj7yv")
-region = Rect2(208, 28, 26, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wse8f"]
-atlas = ExtResource("2_fj7yv")
-region = Rect2(234, 28, 26, 28)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ic0uy"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tlwt5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aqk2v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_036b0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dwbse")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pkg7o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gbfbk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ioo17")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wse8f")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="PackedScene" uid="uid://elgqc5fl78tt" path="res://scenes/npc_trainer.tscn" id="2_fj7yv"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_f3sb7")
 
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-sprite_frames = SubResource("SpriteFrames_ic0uy")
-frame_progress = 0.7674412
+[node name="NpcTrainer" parent="." instance=ExtResource("2_fj7yv")]
+position = Vector2(486, 109)
