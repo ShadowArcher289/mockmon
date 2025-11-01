@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://b4p6ygcgwcdb7"]
+[gd_scene load_steps=29 format=3 uid="uid://b4p6ygcgwcdb7"]
 
 [ext_resource type="Texture2D" uid="uid://vfj82j4iwy7o" path="res://sprites/Main Character Male.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://dj7sk3k2b4kxh" path="res://scenes/player.gd" id="1_g2els"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8vuu"]
 
@@ -206,6 +207,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_u8vuu")
@@ -213,5 +215,5 @@ shape = SubResource("CircleShape2D_u8vuu")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"walk_up"
-frame_progress = 0.33853987
+animation = &"run_down"
+frame_progress = 0.3044496
