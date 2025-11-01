@@ -15,7 +15,7 @@ const BASE_SPEC_ATK = 30;
 const BASE_SPEC_DEF = 30;
 const BASE_SPEED = 50;
 
-const WEAKNESSES: Array[String] = ["Water", "Ground", "Grass"];
+const WEAKNESSES: Array[String] = ["Water", "Ground", "Grass", "Fighting", "Steel"];
 const RESISTANCES: Array[String] = ["Normal", "Flying", "Poison", "Fire"];
 
 
