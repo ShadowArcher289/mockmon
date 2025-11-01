@@ -1,10 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://b80hedxmrftdl"]
+[gd_scene load_steps=4 format=3 uid="uid://b80hedxmrftdl"]
 
 [ext_resource type="Script" uid="uid://ymyk54nlc62h" path="res://scripts/world.gd" id="1_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://c7jpgjkp1nlkp" path="res://scenes/npc_trainer.tscn" id="2_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://b4p6ygcgwcdb7" path="res://scenes/player.tscn" id="3_4wyf3"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_rwgxs")
 
 [node name="NpcTrainer" parent="." instance=ExtResource("2_4wyf3")]
 position = Vector2(486, 109)
+
+[node name="Player" parent="." instance=ExtResource("3_4wyf3")]
+position = Vector2(195, 154)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]

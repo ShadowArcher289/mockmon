@@ -1,9 +1,13 @@
-[gd_scene load_steps=29 format=3 uid="uid://b4p6ygcgwcdb7"]
+[gd_scene load_steps=30 format=3 uid="uid://b4p6ygcgwcdb7"]
 
 [ext_resource type="Texture2D" uid="uid://vfj82j4iwy7o" path="res://sprites/Main Character Male.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dj7sk3k2b4kxh" path="res://scenes/player.gd" id="1_g2els"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8vuu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke2ow"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(60, 33, 20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -103,6 +107,14 @@ region = Rect2(340, 29, 22, 26)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tuyoq"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke2ow")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g2els")
@@ -215,5 +227,4 @@ shape = SubResource("CircleShape2D_u8vuu")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"run_down"
-frame_progress = 0.3044496
+animation = &"idle"

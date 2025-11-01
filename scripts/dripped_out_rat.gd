@@ -26,4 +26,4 @@ func get_move(move_number: int): ## Returns the mockmon's move
 	return moves[move_number-1];
 
 func take_damage(move_used: move):
-	
+	pass
