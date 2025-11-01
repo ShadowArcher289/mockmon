@@ -3,6 +3,8 @@ extends Node2D
 @onready var player: CharacterBody2D = $Player
 @onready var npc_trainer: Node2D = $NpcTrainer
 
+var turn_count = 0;
+
 func _ready() -> void:
 	battle(player, npc_trainer);
 
