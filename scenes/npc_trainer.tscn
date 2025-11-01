@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://elgqc5fl78tt"]
+[gd_scene load_steps=3 format=3 uid="uid://elgqc5fl78tt"]
 
 [ext_resource type="Texture2D" uid="uid://eo8ec1r0fl00" path="res://icon.svg" id="1_nxi5t"]
+[ext_resource type="Script" uid="uid://bkyug27h6ed2n" path="res://scripts/npc_trainer.gd" id="1_qa06k"]
 
 [node name="NpcTrainer" type="Node2D"]
+script = ExtResource("1_qa06k")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(302, 306)
