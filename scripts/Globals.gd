@@ -1,5 +1,6 @@
 extends Node
 
-func calculate_damage(enemy_atk: int, my_defense: int, move_power: int) -> void:
-		#return ( (( (2*50)/5)+2)/50) + 2);
-		pass;
+const LEVEL = 50.0;
+
+func calculate_damage(enemy_atk: float, my_defense: float, move_power: float) -> int:
+		return ceili( ( ((((2.0*LEVEL)/5)+2) * move_power * (enemy_atk/my_defense)) /50.0) + 2);

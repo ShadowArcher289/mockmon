@@ -1,8 +1,8 @@
 extends Node2D
-var fling_drip = move.new("Steel", 40, "Physical", 10, 90);
-var sick_burn = move.new("Fire", 30, "Special", 20, 100);
-var do_a_flip = move.new("Psychic", 40, "Special", 10, 90);
-#var fling_drip = move.new("Steel", 40, "Physical", 10, 90);
+var rock_slam = move.new("Rock", 40, "Physical", 15, 100);
+var intimidating_stare = move.new("Psychic", 10, "Special", 20, 100);
+var rock_throw = move.new("Rock", 60, "Physical", 15, 90);
+var what_rocks_do = move.new("Rock", 0, "Physical", 30, 80);
 
 var moves: Array[move] = [];
 
@@ -16,7 +16,7 @@ const BASE_SPEED = 50;
 var currentHp = MAX_HP;
 
 func _ready() -> void:
-	moves = [fling_drip, sick_burn, do_a_flip];
+	moves = [rock_slam, intimidating_stare, rock_throw, what_rocks_do];
 
 func use_move(move_number: int, target: Node2D): ## Use a move on a given target given the move number
 	var target_move = moves[move_number-1];
