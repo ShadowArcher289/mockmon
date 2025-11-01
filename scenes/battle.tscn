@@ -15,5 +15,6 @@ sprite_frames = SubResource("SpriteFrames_dn72j")
 [node name="Player" parent="." instance=ExtResource("2_p1qf1")]
 position = Vector2(73, 205)
 
-[node name="NpcTrainer" parent="." instance=ExtResource("3_a12nh")]
+[node name="NpcTrainer" parent="." node_paths=PackedStringArray("mockmon_party") instance=ExtResource("3_a12nh")]
 position = Vector2(306, 150)
+mockmon_party = [NodePath("DrippedOutRat"), NodePath("GuyInACloak"), NodePath("LiteralRock")]
