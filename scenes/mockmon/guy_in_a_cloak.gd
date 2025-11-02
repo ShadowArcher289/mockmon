@@ -4,8 +4,11 @@ var pocket_knife = move.new("Pocket Knife", "Steel", 100000000, "Physical", 5, 2
 var alley_jump = move.new("Alley Jump", "Dark", 50, "Physical", 15, 100);
 var pickpocket = move.new("Pickpocket", "Normal", 80, "Physical", 10, 95);
 var flash = move.new("Flash", "Psychic", 100, "Special", 10, 80);
-var moves
+
 const TYPE : Array[String] = ["Normal", "Dark"];
+
+const MOCKMON_NAME = "A Guy In a Cloak";
+const MOCKMON_SPRITE = preload("res://sprites/GuyInACloak.png");
 
 const MAX_HP = 80; # base stats
 const BASE_ATK = 80;
@@ -18,18 +21,20 @@ const WEAKNESSES: Array[String] = ["Water", "Ground", "Grass", "Fighting", "Stee
 const RESISTANCES: Array[String] = ["Normal", "Flying", "Poison", "Fire"];
 const IMMUNITIES: Array[String] = ["Ghost", "Psychic"];
 
+var moves: Array[move];
+
 var currentHp = MAX_HP;
-var death = false;
+var death: bool = false;
+
 func _ready() -> void:
 	moves = [pocket_knife, alley_jump, pickpocket, flash];
 
-func use_move(move_number: int, target: Node2D): ## Use a move on a given target given the move number
-	var target_move = moves[move_number-1];
+func use_move(move_choice: move, target: Node2D): ## Use a move on a given target given a move 
 	if target.has_method("take_damage"):
-		if target_move.is_category("special"):
-			target.take_damage(BASE_SPEC_ATK, target_move);
-		elif target_move.is_category("physical"):
-			target.take_damage(BASE_ATK, target_move);
+		if move_choice.is_category("special"):
+			target.take_damage(BASE_SPEC_ATK, move_choice);
+		elif move_choice.is_category("physical"):
+			target.take_damage(BASE_ATK, move_choice);
 
 func get_move(move_number: int): ## Returns the mockmon's move
 	return moves[move_number-1];

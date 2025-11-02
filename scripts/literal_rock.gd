@@ -7,7 +7,7 @@ var what_rocks_do = move.new("What Rocks Do", "Rock", 0, "Physical", 30, 80);
 
 const TYPE : Array[String] = ["Rock"];
 
-const MOCKMON_NAME = "Literal Rock";
+const MOCKMON_NAME = "A Literal Rock";
 const MOCKMON_SPRITE = preload("res://sprites/ALiteralRock.png");
 
 const MAX_HP = 120; # base sats
@@ -24,7 +24,7 @@ const IMMUNITIES: Array[String] = [];
 var moves: Array[move];
 
 var currentHp = MAX_HP;
-var death : bool
+var death: bool = false;
 
 func _ready() -> void:
 	moves = [rock_slam, intimidating_stare, rock_throw, what_rocks_do];
