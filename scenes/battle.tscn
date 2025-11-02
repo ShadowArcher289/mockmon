@@ -1,18 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://cd73d42b80s57"]
+[gd_scene load_steps=15 format=3 uid="uid://cd73d42b80s57"]
 
 [ext_resource type="Script" uid="uid://dcspi46o52gy1" path="res://scripts/battle.gd" id="1_dn72j"]
 [ext_resource type="PackedScene" uid="uid://5k07bj3wni8h" path="res://scenes/player.tscn" id="2_p1qf1"]
 [ext_resource type="Texture2D" uid="uid://thkvr217h7f6" path="res://sprites/field_night_bg.png" id="2_yahae"]
 [ext_resource type="PackedScene" uid="uid://c7jpgjkp1nlkp" path="res://scenes/npc_trainer.tscn" id="3_a12nh"]
-[ext_resource type="PackedScene" uid="uid://bn5sclhri6jpd" path="res://scenes/mockmon_card.tscn" id="5_lpir7"]
+[ext_resource type="PackedScene" path="res://scenes/mockmon_card.tscn" id="5_lpir7"]
 [ext_resource type="Texture2D" uid="uid://b67juxyxo5vph" path="res://sprites/grass_base0.png" id="5_v7i3o"]
-[ext_resource type="PackedScene" uid="uid://d32mw3tpoq32e" path="res://scenes/move_card.tscn" id="6_6vh42"]
+[ext_resource type="PackedScene" path="res://scenes/move_card.tscn" id="6_6vh42"]
 [ext_resource type="Texture2D" uid="uid://hcsy68ei1dsc" path="res://sprites/grass_base1.png" id="6_66ngm"]
 [ext_resource type="Texture2D" uid="uid://ccdo37ga2d1bx" path="res://sprites/FightButton.png" id="7_22uqi"]
 [ext_resource type="Texture2D" uid="uid://bq3m5u2w12dw1" path="res://sprites/BagButton.png" id="8_6ni85"]
 [ext_resource type="Theme" uid="uid://ba3f5q5mdq0uc" path="res://themes/move_select_theme.tres" id="8_22uqi"]
 [ext_resource type="Texture2D" uid="uid://ce83xanbh41ac" path="res://sprites/MockmonButton.png" id="9_vceff"]
 [ext_resource type="Texture2D" uid="uid://bh8na52wtjs0l" path="res://sprites/RunButton.png" id="10_ekamt"]
+[ext_resource type="AudioStream" uid="uid://cvi3hg6eu3850" path="res://audio/8 BIT RPG BATTLE Retro Game Music No Copyright Music.mp3" id="14_6ni85"]
 
 [node name="Battle" type="Control"]
 layout_mode = 3
@@ -298,6 +299,10 @@ one_shot = true
 [node name="PlayerMoveFinishedTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_6ni85")
+autoplay = true
 
 [connection signal="pressed" from="UiBody/BattleOptions/VBoxContainer/HBoxContainer/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="UiBody/BattleOptions/VBoxContainer/HBoxContainer2/SwitchMockmon" to="." method="_on_switch_mockmon_pressed"]
