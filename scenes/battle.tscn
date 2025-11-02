@@ -1,20 +1,152 @@
-[gd_scene load_steps=5 format=3 uid="uid://cd73d42b80s57"]
+[gd_scene load_steps=6 format=3 uid="uid://cd73d42b80s57"]
 
 [ext_resource type="Script" uid="uid://dcspi46o52gy1" path="res://scripts/battle.gd" id="1_dn72j"]
 [ext_resource type="PackedScene" uid="uid://5k07bj3wni8h" path="res://scenes/player.tscn" id="2_p1qf1"]
 [ext_resource type="PackedScene" uid="uid://c7jpgjkp1nlkp" path="res://scenes/npc_trainer.tscn" id="3_a12nh"]
+[ext_resource type="Texture2D" uid="uid://eo8ec1r0fl00" path="res://icon.svg" id="4_a12nh"]
+[ext_resource type="PackedScene" uid="uid://bn5sclhri6jpd" path="res://scenes/mockmon_card.tscn" id="5_lpir7"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_dn72j"]
-
-[node name="Battle" type="Node2D"]
+[node name="Battle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_dn72j")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_dn72j")
+[node name="Icon4" type="Sprite2D" parent="."]
+position = Vector2(997.5, 557)
+scale = Vector2(17.523438, 10)
+texture = ExtResource("4_a12nh")
 
 [node name="Player" parent="." instance=ExtResource("2_p1qf1")]
-position = Vector2(73, 205)
+position = Vector2(283, 858)
 
 [node name="NpcTrainer" parent="." node_paths=PackedStringArray("mockmon_party") instance=ExtResource("3_a12nh")]
-position = Vector2(306, 150)
+position = Vector2(1411, 18)
 mockmon_party = [NodePath("DrippedOutRat"), NodePath("GuyInACloak"), NodePath("LiteralRock")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Options" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Options/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 50
+text = "What will ____ do?"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Fight" type="TextureButton" parent="Options/HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_a12nh")
+
+[node name="Bag(None)" type="TextureButton" parent="Options/HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_a12nh")
+
+[node name="Pokemon" type="TextureButton" parent="Options/HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_a12nh")
+
+[node name="Run(None)" type="TextureButton" parent="Options/HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_a12nh")
+
+[node name="PlayerMockmonLocation" type="Marker2D" parent="."]
+position = Vector2(490, 756)
+
+[node name="NpcMockmonLocation" type="Marker2D" parent="."]
+position = Vector2(1438, 279)
+
+[node name="PlayerMonHpBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 1303.0
+offset_top = 697.0
+offset_right = 1796.0
+offset_bottom = 768.0
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="NpcMonHpBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 116.0
+offset_right = 588.0
+offset_bottom = 187.0
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MockmonCard1" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("5_lpir7")]
+layout_mode = 2
+
+[node name="MockmonCard2" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("5_lpir7")]
+layout_mode = 2
+
+[node name="MockmonCard3" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("5_lpir7")]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MockmonCard4" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("5_lpir7")]
+layout_mode = 2
+
+[node name="MockmonCard5" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("5_lpir7")]
+layout_mode = 2
+
+[node name="MockmonCard6" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("5_lpir7")]
+layout_mode = 2

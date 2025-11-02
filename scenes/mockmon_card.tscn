@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn5sclhri6jpd"]
+
+[ext_resource type="Script" uid="uid://svdm0tmqo2sb" path="res://scripts/mockmon_card.gd" id="1_4y5km"]
+[ext_resource type="Texture2D" uid="uid://eo8ec1r0fl00" path="res://icon.svg" id="1_8ady5"]
+
+[node name="MockmonCard" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_4y5km")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 180
+
+[node name="MockmonSprite" type="TextureRect" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_8ady5")
+stretch_mode = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 180
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MockmonName" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 50
+text = "Mockmon Name"
+horizontal_alignment = 1
+
+[node name="HpBar" type="ProgressBar" parent="HBoxContainer/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+step = 1.0
+value = 50.0
+show_percentage = false

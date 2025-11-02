@@ -1,0 +1,15 @@
+extends Button
+
+@export var current_mockmon = null; ## the mockmon this card will be displaying
+
+@onready var mockmon_sprite: TextureRect = $HBoxContainer/MarginContainer/MockmonSprite
+@onready var mockmon_name: Label = $HBoxContainer/MarginContainer2/VBoxContainer/MockmonName
+@onready var hp_bar: ProgressBar = $HBoxContainer/MarginContainer2/VBoxContainer/HpBar
+
+func _process(_delta: float) -> void:
+	if current_mockmon != null: # update the mockmon_card for the mockmon's data
+		#mockmon_name.text = current_mockmon.name; # use once Mockmon.gd is made
+		mockmon_name.text = "Name"; # temporary 
+		#mockmon_sprite.texture = preload(current_mockmon.sprite);
+		mockmon_sprite.texture = preload("res://icon.svg");
+		hp_bar = current_mockmon.currentHp;
