@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://71yov0bcuh8g"]
+
+[ext_resource type="Script" uid="uid://ck5x7k5c2qvkh" path="res://scripts/krampus.gd" id="1_6mf18"]
+[ext_resource type="Texture2D" uid="uid://eo8ec1r0fl00" path="res://icon.svg" id="2_ww01h"]
+
+[node name="Krampus" type="Node2D"]
+script = ExtResource("1_6mf18")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("2_ww01h")

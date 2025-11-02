@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://052n7glwospm"]
+
+[ext_resource type="Script" uid="uid://dakf83hdjywk2" path="res://scripts/little_elves.gd" id="1_1tedg"]
+[ext_resource type="Texture2D" uid="uid://eo8ec1r0fl00" path="res://icon.svg" id="2_2f202"]
+
+[node name="Little_Eleves" type="Node2D"]
+script = ExtResource("1_1tedg")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("2_2f202")
