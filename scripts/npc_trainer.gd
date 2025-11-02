@@ -1,17 +1,20 @@
 extends Node2D
 
 @onready var literal_rock: Node2D = $LiteralRock
+@onready var dripped_out_rat: Node2D = $DrippedOutRat
 
-@export var mockmon_party: Array[Mockmon] = [];
+@export var mockmon_party: Array[Node] = [];
 
-@export var current_mockmon: Mockmon;
+@export var current_mockmon: Node2D = dripped_out_rat
 
-@export var enemy_current_mockmon: Mockmon = literal_rock;
+@export var enemy_current_mockmon: Node = literal_rock;
 
 
 func _ready() -> void:
-	make_move();
+	current_mockmon = dripped_out_rat;
 	enemy_current_mockmon = literal_rock;
+	make_move();
+	
 
 func _process(delta: float) -> void:
 	pass
@@ -23,7 +26,7 @@ func make_move() :
 	var super_mon;
 	var chosen_move;
 	for i in range(current_mockmon.moves.size()) :
-		weakness = Globals.is_weak(current_mockmon.moves[i], enemy_current_mockmon);
+		weakness = Globals.is_weak(current_mockmon.moves[i].type, enemy_current_mockmon);
 		if weakness == true :
 			good_move = current_mockmon.moves[i];
 			if good_move.is_category("special") :
@@ -43,7 +46,7 @@ func make_move() :
 					SignalBus.npc_move_finished.emit()
 	if weakness == false :
 		for i in range(current_mockmon.moves.size()) :
-			resistance = Globals.is_resist(current_mockmon.moves[i], enemy_current_mockmon)
+			resistance = Globals.is_resist(current_mockmon.moves[i].type, enemy_current_mockmon)
 			if resistance == true :
 				#switch_members()
 				SignalBus.npc_move_finished.emit()

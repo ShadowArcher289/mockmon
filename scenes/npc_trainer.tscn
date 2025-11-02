@@ -6,9 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c7uwuvrwffju5" path="res://scenes/mockmon/guy_in_a_cloak.tscn" id="4_vpq25"]
 [ext_resource type="PackedScene" uid="uid://c0jarsdt2wjtd" path="res://scenes/mockmon/literal_rock.tscn" id="5_87etf"]
 
-[node name="NpcTrainer" type="Node2D" node_paths=PackedStringArray("current_mockmon")]
+[node name="NpcTrainer" type="Node2D"]
 script = ExtResource("1_qa06k")
-current_mockmon = NodePath("DrippedOutRat")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(302, 306)

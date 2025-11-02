@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b80hedxmrftdl"]
+[gd_scene load_steps=5 format=3 uid="uid://b80hedxmrftdl"]
 
 [ext_resource type="Script" uid="uid://ymyk54nlc62h" path="res://scripts/world.gd" id="1_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://c7jpgjkp1nlkp" path="res://scenes/npc_trainer.tscn" id="2_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://5k07bj3wni8h" path="res://scenes/player.tscn" id="3_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://blx24epx1ubvt" path="res://scenes/mockmon/dripped_out_rat.tscn" id="4_k0juu"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_rwgxs")
@@ -10,9 +11,13 @@ script = ExtResource("1_rwgxs")
 [node name="NpcTrainer" parent="." instance=ExtResource("2_4wyf3")]
 position = Vector2(486, 109)
 
-[node name="Player" parent="." instance=ExtResource("3_4wyf3")]
+[node name="Player" parent="." node_paths=PackedStringArray("mockmon_party") instance=ExtResource("3_4wyf3")]
 position = Vector2(195, 154)
+mockmon_party = []
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+
+[node name="DrippedOutRat" parent="." instance=ExtResource("4_k0juu")]
+position = Vector2(584, 149)
