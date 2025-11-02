@@ -21,7 +21,7 @@ const RESISTANCES: Array[String] = ["Normal", "Flying", "Psychic", "Dragon"];
 const IMMUNITIES: Array[String] = ["Poison"];
 
 var moves: Array[move];
-var death : bool
+var death = false;
 
 var currentHp = MAX_HP;
 

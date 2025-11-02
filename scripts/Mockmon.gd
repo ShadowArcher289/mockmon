@@ -15,7 +15,7 @@ var resistances : Array[String]
 var immunities : Array[String]
 var moves : Array[move]
 var current_hp : int
-var death : bool
+var death = false;
 
 ## Create a new move (Type, AtkDmg, Category, PP, Accuracy);
 func _init(input_name : String, input_sprite : String, input_type : Array[String], input_max_hp : int, input_base_atk : int, input_base_def : int, input_base_spec_atk: int, input_base_spec_def: int, input_speed :int, input_weaknesses : Array[String], input_resistances : Array[String], input_immunities : Array[String], input_moves : Array[move], input_current_hp : int ) -> void:

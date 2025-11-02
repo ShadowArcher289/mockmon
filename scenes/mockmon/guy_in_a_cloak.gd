@@ -19,7 +19,7 @@ const RESISTANCES: Array[String] = ["Normal", "Flying", "Poison", "Fire"];
 const IMMUNITIES: Array[String] = ["Ghost", "Psychic"];
 
 var currentHp = MAX_HP;
-var death : bool
+var death = false;
 func _ready() -> void:
 	moves = [pocket_knife, alley_jump, pickpocket, flash];
 
