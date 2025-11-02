@@ -1,18 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7jpgjkp1nlkp"]
+[gd_scene load_steps=8 format=3 uid="uid://c7jpgjkp1nlkp"]
 
 [ext_resource type="Script" uid="uid://bkyug27h6ed2n" path="res://scripts/npc_trainer.gd" id="1_qa06k"]
 [ext_resource type="PackedScene" uid="uid://blx24epx1ubvt" path="res://scenes/mockmon/dripped_out_rat.tscn" id="3_xmhu2"]
 [ext_resource type="PackedScene" uid="uid://c7uwuvrwffju5" path="res://scenes/mockmon/guy_in_a_cloak.tscn" id="4_vpq25"]
 [ext_resource type="PackedScene" uid="uid://c0jarsdt2wjtd" path="res://scenes/mockmon/literal_rock.tscn" id="5_87etf"]
+[ext_resource type="PackedScene" uid="uid://rposk45i45xm" path="res://scenes/mockmon/ms_klaus.tscn" id="5_xmhu2"]
+[ext_resource type="PackedScene" uid="uid://scr6hnxl17x" path="res://scenes/mockmon/little_eleves.tscn" id="6_87etf"]
+[ext_resource type="PackedScene" uid="uid://bde4v8x8uufla" path="res://scenes/mockmon/hacker.tscn" id="7_x7nxj"]
 
 [node name="NpcTrainer" type="Node2D"]
 script = ExtResource("1_qa06k")
 
 [node name="DrippedOutRat" parent="." instance=ExtResource("3_xmhu2")]
-position = Vector2(138, -169)
+visible = false
+position = Vector2(-3, -3)
 
 [node name="GuyInACloak" parent="." instance=ExtResource("4_vpq25")]
-position = Vector2(-166, 148)
+visible = false
+position = Vector2(383, 29)
 
 [node name="LiteralRock" parent="." instance=ExtResource("5_87etf")]
-position = Vector2(160, 144)
+visible = false
+position = Vector2(609, 25)
+
+[node name="Ms_Klaus" parent="." instance=ExtResource("5_xmhu2")]
+visible = false
+position = Vector2(-267, -3)
+
+[node name="Little_Eleves" parent="." instance=ExtResource("6_87etf")]
+visible = false
+position = Vector2(182, 28)
+
+[node name="Hacker" parent="." instance=ExtResource("7_x7nxj")]
+visible = false
+position = Vector2(854, 19)

@@ -8,6 +8,8 @@ var no_maidens = move.new("no_maidens", "Ground", 80, "Physical", 10, 95)
 const TYPE : Array[String] = ["Electric", "Ground"];
 
 const MOCKMON_NAME = "Hacker";
+const MOCKMON_SPRITE = preload("res://sprites/Hacker.png");
+
 
 const MAX_HP = 90; # base stats
 const BASE_ATK = 50;

@@ -8,6 +8,8 @@ var klausrot = move.new("klausrot", "Psychic", 75, "Special", 15, 100)
 const TYPE : Array[String] = ["Psychic"];
 
 const MOCKMON_NAME = "Mrs. Klaus";
+const MOCKMON_SPRITE = preload("res://sprites/Cat.png");
+
 const MAX_HP = 100; 
 const BASE_ATK = 100;
 const BASE_DEF = 30;

@@ -7,6 +7,7 @@ var in_a_bath = move.new("in_a_bath", "Grass", 100, "Physical", 5, 100)
 const TYPE : Array[String] = ["Normal", "Grass"];
 
 const MOCKMON_NAME = "Little Elves";
+const MOCKMON_SPRITE = preload("res://sprites/LittleElves.png");
 
 const MAX_HP = 130; # base stats
 const BASE_ATK = 50;
