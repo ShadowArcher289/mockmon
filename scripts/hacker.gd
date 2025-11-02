@@ -1,9 +1,9 @@
 extends Node2D
 
-var golisano_stench = move.new("golisano_stench", "Poison", 100, "Special", 10, 100);
-var virus_spread = move.new("virus_spread", "Electric", 70, "Special", 15, 100);
-var celsius_overdose = move.new("celsius_overdose", "Electric", 90, "Physical", 10, 90)
-var no_maidens = move.new("no_maidens", "Ground", 80, "Physical", 10, 95)
+var golisano_stench = move.new("Golisano Stench", "Poison", 100, "Special", 10, 100);
+var virus_spread = move.new("Virus Spread", "Electric", 70, "Special", 15, 100);
+var celsius_overdose = move.new("Celsius Overdose", "Electric", 90, "Physical", 10, 90)
+var no_maidens = move.new("No Maidens", "Ground", 80, "Physical", 10, 95)
 
 const TYPE : Array[String] = ["Electric", "Ground"];
 

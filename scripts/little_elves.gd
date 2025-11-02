@@ -1,9 +1,9 @@
 extends Node2D
 
-var on_a_shelf = move.new("on_a_shelf", "Normal", 88, "Physical", 10, 100)
-var on_a_belt = move.new("on_a_belt", "Normal", 55, "Physical", 10, 100)
-var in_a_hat = move.new("in_a_hat", "Normal", 77, "Physical", 10, 100)
-var in_a_bath = move.new("in_a_bath", "Grass", 100, "Physical", 5, 100)
+var on_a_shelf = move.new("On A Shelf", "Normal", 88, "Physical", 10, 100)
+var on_a_belt = move.new("On A Belt", "Normal", 55, "Physical", 10, 100)
+var in_a_hat = move.new("In A Hat", "Normal", 77, "Physical", 10, 100)
+var in_a_bath = move.new("In A Bath", "Grass", 100, "Physical", 5, 100)
 const TYPE : Array[String] = ["Normal", "Grass"];
 
 const MOCKMON_NAME = "Little Elves";

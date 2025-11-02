@@ -14,6 +14,7 @@ func _process(_delta: float) -> void:
 		mockmon_sprite.texture = current_mockmon.MOCKMON_SPRITE;
 		#mockmon_sprite.texture = preload("res://icon.svg");
 		hp_bar.value = current_mockmon.currentHp;
+		hp_bar.max_value = current_mockmon.MAX_HP;
 		
 		if current_mockmon.currentHp <= 0:
 			panel.show();

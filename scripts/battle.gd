@@ -86,10 +86,14 @@ func _ready() -> void:
 	
 	battle(player_trainer, npc_trainer); # start battle automatically
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player_trainer.current_mockmon.death && !switch_mockmon_box.is_visible_in_tree(): # prompt to switch mon if the current is dead.
 		switch_mockmon_box.show();
 		await player_move_finished_timer.timeout;
+		
+	for mon in npc_trainer.mockmon_party: # loop through every npc mon, if it is not the current, and it is not hidden, hide it.
+		if mon != npc_trainer.current_mockmon && !mon.is_visible_in_tree():
+			mon = false;
 
 func battle(player: CharacterBody2D, npc: Node2D) -> void: ## starts a battle between the two characters
 	player_trainer.current_mockmon.show(); # set the mockmon's locations
