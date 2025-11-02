@@ -6,7 +6,7 @@ func calculate_damage(enemy_atk: float, my_defense: float, move_power: float, mo
 	var type_modifier = is_weak(move_type, weaknesses, resistances, immunities);
 	return ceili( ( ((((2.0*LEVEL)/5)+2) * move_power * (enemy_atk/my_defense)) /50.0) + 2) * type_modifier;
 	
-func is_weak(moveType: String, weaknesses: Array[String], resistances: Array[String], immunities:Array[String]) -> float:
+func weak_calc(moveType: String, weaknesses: Array[String], resistances: Array[String], immunities:Array[String]) -> float:
 	var count:int = 0
 	if(immunities.has(moveType)) :
 		return 0
@@ -26,3 +26,42 @@ func is_weak(moveType: String, weaknesses: Array[String], resistances: Array[Str
 		return 0.25
 	else:
 		return 1
+
+#func is_weak(moveType: String, Mockmon: mon) -> bool: 
+	#var count:int = 0
+	#for i in range(mon.weaknesses.size()) :
+		#if mon.weaknesses[i] == moveType:
+			#count+=1
+	#for i in range(mon.resistances.size()) :
+		#if mon.resistances[i] == moveType:
+			#count -=1
+	#if count > 0 :
+		#return true
+	#if count <= 0 :
+		#return false
+
+#func is_resist(moveType: String, Mockmon: mon) -> bool: 
+		#var count: int = 0
+		#for i in range(mon.resistances.size()) :
+			#if mon.resistances[i] == moveType :
+				#count +=1
+		#for i in range(mon.weaknesses.size()) :
+			#if mon.resistances[i] == moveType :
+				#count -=1
+		#if count > 0 :
+			#return true
+		#if count <= 0 :
+			#return false
+		#
+#func is_neutral(moveType: String, Mockmon: mon) -> bool: 
+		#var count: int = 0
+		#for i in range(mon.resistances.size()) :
+			#if mon.resistances[i] == moveType :
+				#count +=1
+		#for i in range(mon.weaknesses.size()) :
+			#if mon.resistances[i] == moveType :
+				#count -=1
+		#if count == 0 :
+			#return true
+		#else :
+			#return false

@@ -1,10 +1,8 @@
-extends Node2D
+extends Mockmon
 var rock_slam = move.new("Rock", 40, "Physical", 15, 100);
 var intimidating_stare = move.new("Psychic", 10, "Special", 20, 100);
 var rock_throw = move.new("Rock", 60, "Physical", 15, 90);
 var what_rocks_do = move.new("Rock", 0, "Physical", 30, 80);
-
-var moves: Array[move] = [];
 
 const TYPE : Array[String] = ["Rock"];
 

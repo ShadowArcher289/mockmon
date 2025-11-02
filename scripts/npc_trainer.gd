@@ -2,16 +2,60 @@ extends Node2D
 
 @onready var literal_rock: Node2D = $LiteralRock
 
-@export var mockmon_party: Array[Node2D] = [];
+@export var mockmon_party: Array[Mockmon] = [];
 
-@export var current_mockmon: Node2D;
+@export var current_mockmon: Mockmon;
 
-@export var enemy_current_mockmon: Node2D = literal_rock;
+@export var enemy_current_mockmon: Mockmon = literal_rock;
+
 
 func _ready() -> void:
+	make_move();
 	enemy_current_mockmon = literal_rock;
-	#if(enemy_current_mockmon.has_method())
-	pass
 
 func _process(delta: float) -> void:
 	pass
+
+func make_move() :
+	var weakness = false
+	var resistance = false
+	var good_move = "";
+	var super_mon;
+	var chosen_move;
+	for i in range(current_mockmon.moves.size()) :
+		weakness = Globals.is_weak(current_mockmon.moves[i], enemy_current_mockmon);
+		if weakness == true :
+			good_move = current_mockmon.moves[i];
+			if good_move.is_category("special") :
+				enemy_current_mockmon.take_damage(current_mockmon.BASE_SPEC_ATK, good_move)
+				SignalBus.npc_move_finished.emit()	
+			else :
+				enemy_current_mockmon.take_damage(current_mockmon.BASE_ATK, good_move)
+				SignalBus.npc_move_finished.emit()
+					
+	if weakness == false :
+		for i in range(mockmon_party.size()) :
+			super_mon = mockmon_party[i]
+			for j in range(current_mockmon.moves.size()) :
+				weakness = Globals.is_weak(super_mon.moves[j], enemy_current_mockmon);
+				if weakness == true :
+					#switch_members()
+					SignalBus.npc_move_finished.emit()
+	if weakness == false :
+		for i in range(current_mockmon.moves.size()) :
+			resistance = Globals.is_resist(current_mockmon.moves[i], enemy_current_mockmon)
+			if resistance == true :
+				#switch_members()
+				SignalBus.npc_move_finished.emit()
+	else :
+		var random_integer = randi_range(1, 4);
+		chosen_move = current_mockmon.moves[random_integer];
+		if chosen_move.is_category("special") :
+				enemy_current_mockmon.take_damage(current_mockmon.BASE_SPEC_ATK, good_move)
+				SignalBus.npc_move_finished.emit()	
+		else :
+				enemy_current_mockmon.take_damage(current_mockmon.BASE_ATK, good_move)
+				SignalBus.npc_move_finished.emit()
+	
+				
+		
