@@ -1,7 +1,7 @@
 extends Node2D
-var fling_drip = move.new("Fling Drip", "Steel", 40, "Physical", 10, 90);
-var sick_burn = move.new("Sick Burn", "Fire", 30, "Special", 20, 100);
-var do_a_flip = move.new("Do A Flip", "Psychic", 40, "Special", 10, 90);
+var fling_drip = move.new("Fling Drip", "Steel", 60, "Physical", 10, 90);
+var sick_burn = move.new("Sick Burn", "Fire", 70, "Special", 20, 100);
+var do_a_flip = move.new("Do A Flip", "Psychic", 85, "Special", 10, 90);
 var aura_farm = move.new("Aura Farm", "Fire", 80, "Physical", 10, 90);
 
 const TYPE : Array[String] = ["Steel", "Fire"];
@@ -10,10 +10,10 @@ const MOCKMON_NAME = "A Dripped Out Rat";
 const MOCKMON_SPRITE = preload("res://sprites/DrippedOutRat.png");
 
 const MAX_HP = 120; # base sats
-const BASE_ATK = 10;
-const BASE_DEF = 20;
-const BASE_SPEC_ATK = 30;
-const BASE_SPEC_DEF = 30;
+const BASE_ATK = 100;
+const BASE_DEF = 70;
+const BASE_SPEC_ATK = 100;
+const BASE_SPEC_DEF = 70;
 const BASE_SPEED = 50;
 
 const WEAKNESSES: Array[String] = ["Water", "Ground", "Fighting"];
