@@ -27,6 +27,10 @@ extends Control
 
 @onready var dialog_label: RichTextLabel = $UiBody/BattleOptions/MarginContainer/DialogLabel
 
+@onready var npc_move_finished_timer: Timer = $NpcMoveFinishedTimer
+@onready var player_move_finished_timer: Timer = $PlayerMoveFinishedTimer
+@onready var turn_counter_label: Label = $TurnCounterLabel
+
 var turn_count = 0; ## the turn count
 var battling = true;
 
@@ -41,9 +45,15 @@ func _input(event: InputEvent) -> void:
 func next_dialog(): ## progress to the next dialog if one is available
 	if player_move_messages.size() != 0: # removes and returns the first message in player_move_messages
 			dialog_label.text = player_move_messages.pop_front();
+			print(dialog_label.text + " | turn: " + str(turn_count));
 
 
 func _ready() -> void:
+	SignalBus.connect("player_done_with_battle", _end_battle_player); # connect done with battle signals
+	SignalBus.connect("npc_done_with_battle", _end_battle_npc);
+	SignalBus.connect("npc_move_finished", _npc_move_finished); # connect npc move_finished signal
+	SignalBus.connect("player_move_finished", _player_move_finished);
+	
 	battle_options.show();
 	attack_options.hide();
 	switch_mockmon_box.hide();
@@ -67,14 +77,9 @@ func _ready() -> void:
 	move_card_2.current_move = player_trainer.current_mockmon.moves[1];
 	move_card_3.current_move = player_trainer.current_mockmon.moves[2];
 	move_card_4.current_move = player_trainer.current_mockmon.moves[3];
-
-
+	
 	
 	battle(player_trainer, npc_trainer); # start battle automatically
-	
-	SignalBus.connect("player_done_with_battle", _end_battle_player); # connect done with battle signals
-	SignalBus.connect("npc_done_with_battle", _end_battle_npc);
-	SignalBus.connect("npc_move_finished", _npc_move_finished); # connect npc move_finished signal
 
 
 func battle(player: CharacterBody2D, npc: Node2D) -> void: ## starts a battle between the two characters
@@ -89,45 +94,39 @@ func battle(player: CharacterBody2D, npc: Node2D) -> void: ## starts a battle be
 		player_trainer.current_mockmon.global_position = player_mockmon_location.global_position;
 		npc_trainer.current_mockmon.global_position = npc_mockmon_location.global_position;
 	
-		player_mon_hp_bar.max_value = player_trainer.current_mockmon.MAX_HP; # set hp bar max values
-		npc_mon_hp_bar.max_value = npc_trainer.current_mockmon.MAX_HP;
-		player_mon_hp_bar.value = player_trainer.current_mockmon.currentHp; # set hp bar values
-		npc_mon_hp_bar.value = npc_trainer.current_mockmon.currentHp;
-		
-		next_dialog();
-		npc.make_move();
-		
+		update_hp_bars();
+
 		# check which player's pokemon has the faster speed, if tied, pick random.
 		if npc.current_mockmon.BASE_SPEED > player.current_mockmon.BASE_SPEED:
-			npc.make_move();
-			await SignalBus.npc_move_finished;
+			npc.make_move(player_trainer.current_mockmon);
+			await npc_move_finished_timer.timeout;
 			player_make_move();
-			await SignalBus.player_move_finished;
-		if npc.current_mockmon.BASE_SPEED < player.current_mockmon.BASE_SPEED:
+			await player_move_finished_timer.timeout;
+		elif npc.current_mockmon.BASE_SPEED < player.current_mockmon.BASE_SPEED:
 			player_make_move();
-			await SignalBus.player_move_finished;
-			npc.make_move();
-			await SignalBus.npc_move_finished;
+			await player_move_finished_timer.timeout;
+			npc.make_move(player_trainer.current_mockmon);
+			await npc_move_finished_timer.timeout;
 		else: # do randomly
 			var rand_num = randi_range(1, 2);
 			if rand_num == 1:
-				npc.make_move();
-				await SignalBus.npc_move_finished;
+				npc.make_move(player_trainer.current_mockmon);
+				await npc_move_finished_timer.timeout;
 				player_make_move();
-				await SignalBus.player_move_finished;
+				await player_move_finished_timer.timeout;
 			else:
 				player_make_move();
-				await SignalBus.player_move_finished;
-				npc.make_move();
-				await SignalBus.npc_move_finished;
+				await player_move_finished_timer.timeout;
+				npc.make_move(player_trainer.current_mockmon);
+				await npc_move_finished_timer.timeout;
 		
 		turn_count += 1;
+		turn_counter_label.text = "Turn: " + str(turn_count);
 
 func player_make_move():
 	battle_options.show();
-	player_move_messages = []; ## messages that the game will display before a move is done.
-	player_move_message_index = 0;
-
+	#player_move_messages = []; ## messages that the game will display before a move is done.
+	#player_move_message_index = 0;
 
 func player_switch_mon(mon_team_number: int) -> void: ## switch the current mon from selected mon in party.
 	if mon_team_number <= player_trainer.mockmon_party.size(): # only run if the inputted team number is valid given the team size
@@ -139,6 +138,8 @@ func player_switch_mon(mon_team_number: int) -> void: ## switch the current mon 
 		next_dialog();
 		player_trainer.current_mockmon.show(); # set the mockmon's locations
 		player_trainer.current_mockmon.global_position = player_mockmon_location.global_position;
+		update_moves();
+		update_hp_bars();
 		SignalBus.player_move_finished.emit();
 
 func player_mon_atk(move_number: int, target: Node2D):
@@ -148,15 +149,23 @@ func player_mon_atk(move_number: int, target: Node2D):
 	player_trainer.current_mockmon.use_move(used_move, target);
 	attack_options.hide();
 	
-	player_mon_hp_bar.max_value = player_trainer.current_mockmon.MAX_HP; # set hp bar max values
-	npc_mon_hp_bar.max_value = npc_trainer.current_mockmon.MAX_HP;
-	player_mon_hp_bar.value = player_trainer.current_mockmon.currentHp; # set hp bar values
-	npc_mon_hp_bar.value = npc_trainer.current_mockmon.currentHp;
+	update_hp_bars();
 		
 	SignalBus.player_move_finished.emit();
 	
 
+func update_hp_bars() -> void: ## update hp bars
+	player_mon_hp_bar.max_value = player_trainer.current_mockmon.MAX_HP; # set hp bar max values
+	npc_mon_hp_bar.max_value = npc_trainer.current_mockmon.MAX_HP;
+	player_mon_hp_bar.value = player_trainer.current_mockmon.currentHp; # set hp bar values
+	npc_mon_hp_bar.value = npc_trainer.current_mockmon.currentHp;
 
+func update_moves():
+	move_card_1.current_move = player_trainer.current_mockmon.moves[0]; # set the mockmon's move options
+	move_card_2.current_move = player_trainer.current_mockmon.moves[1];
+	move_card_3.current_move = player_trainer.current_mockmon.moves[2];
+	move_card_4.current_move = player_trainer.current_mockmon.moves[3];
+	
 func _end_battle_player() -> void: ## player lost/quit the battle
 	battling = false;
 	print_debug("NPC Won! in [" + turn_count + "] turns!");
@@ -166,11 +175,18 @@ func _end_battle_npc() -> void: ## npc lost/quit the battle
 	print_debug("Player Won! in [" + turn_count + "] turns!");
 
 func _npc_move_finished(move_description: String):
-	print(move_description)
+	npc_move_finished_timer.start(); # start the timer to progress through the battle's awaits
 	if move_description != null:
 		player_move_messages.append(move_description);
 		next_dialog();
 
+	update_hp_bars();
+	update_moves();
+	npc_trainer.current_mockmon.show(); # set the mockmon's locations
+	npc_trainer.current_mockmon.global_position = npc_mockmon_location.global_position;
+
+func _player_move_finished():
+	player_move_finished_timer.start();
 
 func _on_fight_pressed() -> void:
 	attack_options.show();
