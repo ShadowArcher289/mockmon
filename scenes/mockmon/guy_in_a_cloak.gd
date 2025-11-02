@@ -16,6 +16,6 @@ const BASE_SPEED = 20;
 
 const WEAKNESSES: Array[String] = ["Water", "Ground", "Grass", "Fighting", "Steel"];
 const RESISTANCES: Array[String] = ["Normal", "Flying", "Poison", "Fire"];
-const IMMUNITIES: Array[String] = [];
+const IMMUNITIES: Array[String] = ["Ghost", "Psychic"];
 
 var currentHp = MAX_HP;
