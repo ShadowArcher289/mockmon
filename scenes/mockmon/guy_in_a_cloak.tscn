@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7uwuvrwffju5"]
 
-[ext_resource type="Texture2D" uid="uid://eo8ec1r0fl00" path="res://icon.svg" id="1_hvlxa"]
 [ext_resource type="Script" uid="uid://cl8sg7blp2lxa" path="res://scenes/mockmon/guy_in_a_cloak.gd" id="1_j6mkc"]
+[ext_resource type="Texture2D" uid="uid://gb0yq3wkldju" path="res://sprites/GuyInACloak.png" id="2_j6mkc"]
 
 [node name="GuyInACloak" type="Node2D"]
 script = ExtResource("1_j6mkc")
 
-[node name="Icon" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(3, 0)
-texture = ExtResource("1_hvlxa")
+texture = ExtResource("2_j6mkc")
