@@ -93,7 +93,7 @@ func battle(player: CharacterBody2D, npc: Node2D) -> void: ## starts a battle be
 	player_trainer.current_mockmon.global_position = player_mockmon_location.global_position;
 	npc_trainer.current_mockmon.global_position = npc_mockmon_location.global_position;
 
-	while battling: # every round
+	while battling: # every round, battle cycle
 		player_trainer.current_mockmon.show(); # set the mockmon's locations
 		npc_trainer.current_mockmon.show();
 		player_trainer.current_mockmon.global_position = player_mockmon_location.global_position;
@@ -127,6 +127,7 @@ func battle(player: CharacterBody2D, npc: Node2D) -> void: ## starts a battle be
 		
 		turn_count += 1;
 		turn_counter_label.text = "Turn: " + str(turn_count);
+
 
 func player_make_move():
 	battle_options.show();

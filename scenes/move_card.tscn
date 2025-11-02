@@ -1,12 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://d32mw3tpoq32e"]
 
 [ext_resource type="Script" uid="uid://ccymtbdggw5d1" path="res://scripts/move_card.gd" id="1_0nmu3"]
-[ext_resource type="Texture2D" uid="uid://eo8ec1r0fl00" path="res://icon.svg" id="1_vlky1"]
+[ext_resource type="Texture2D" uid="uid://b4f8ash1hj1qv" path="res://sprites/BaseButton.png" id="1_vlky1"]
 
 [node name="MoveCard" type="TextureButton"]
 offset_right = 40.0
 offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture_normal = ExtResource("1_vlky1")
+stretch_mode = 0
 script = ExtResource("1_0nmu3")
 
 [node name="Label" type="Label" parent="."]

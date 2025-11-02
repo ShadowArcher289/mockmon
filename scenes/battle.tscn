@@ -1,15 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfyls2ilq42r2"]
+[gd_scene load_steps=14 format=3 uid="uid://cd73d42b80s57"]
 
 [ext_resource type="Script" uid="uid://dcspi46o52gy1" path="res://scripts/battle.gd" id="1_dn72j"]
 [ext_resource type="PackedScene" uid="uid://5k07bj3wni8h" path="res://scenes/player.tscn" id="2_p1qf1"]
 [ext_resource type="Texture2D" uid="uid://thkvr217h7f6" path="res://sprites/field_night_bg.png" id="2_yahae"]
 [ext_resource type="PackedScene" uid="uid://c7jpgjkp1nlkp" path="res://scenes/npc_trainer.tscn" id="3_a12nh"]
-[ext_resource type="Texture2D" uid="uid://eo8ec1r0fl00" path="res://icon.svg" id="4_a12nh"]
-[ext_resource type="PackedScene" path="res://scenes/mockmon_card.tscn" id="5_lpir7"]
+[ext_resource type="PackedScene" uid="uid://bn5sclhri6jpd" path="res://scenes/mockmon_card.tscn" id="5_lpir7"]
 [ext_resource type="Texture2D" uid="uid://b67juxyxo5vph" path="res://sprites/grass_base0.png" id="5_v7i3o"]
-[ext_resource type="PackedScene" path="res://scenes/move_card.tscn" id="6_6vh42"]
+[ext_resource type="PackedScene" uid="uid://d32mw3tpoq32e" path="res://scenes/move_card.tscn" id="6_6vh42"]
 [ext_resource type="Texture2D" uid="uid://hcsy68ei1dsc" path="res://sprites/grass_base1.png" id="6_66ngm"]
-[ext_resource type="Texture2D" uid="uid://d0xgxllc6010f" path="res://sprites/overlay_fight.png" id="9_v7i3o"]
+[ext_resource type="Texture2D" uid="uid://ccdo37ga2d1bx" path="res://sprites/FightButton.png" id="7_22uqi"]
+[ext_resource type="Texture2D" uid="uid://bq3m5u2w12dw1" path="res://sprites/BagButton.png" id="8_6ni85"]
+[ext_resource type="Theme" uid="uid://ba3f5q5mdq0uc" path="res://themes/move_select_theme.tres" id="8_22uqi"]
+[ext_resource type="Texture2D" uid="uid://ce83xanbh41ac" path="res://sprites/MockmonButton.png" id="9_vceff"]
+[ext_resource type="Texture2D" uid="uid://bh8na52wtjs0l" path="res://sprites/RunButton.png" id="10_ekamt"]
 
 [node name="Battle" type="Control"]
 layout_mode = 3
@@ -20,14 +23,6 @@ script = ExtResource("1_dn72j")
 position = Vector2(985, 541)
 scale = Vector2(17.523438, 10)
 texture = ExtResource("2_yahae")
-
-[node name="Player" parent="." instance=ExtResource("2_p1qf1")]
-position = Vector2(283, 858)
-
-[node name="NpcTrainer" parent="." node_paths=PackedStringArray("mockmon_party", "current_mockmon") instance=ExtResource("3_a12nh")]
-position = Vector2(1411, 18)
-mockmon_party = [NodePath("DrippedOutRat"), NodePath("GuyInACloak"), NodePath("LiteralRock")]
-current_mockmon = NodePath("DrippedOutRat")
 
 [node name="PlayerMockmonLocation" type="Marker2D" parent="."]
 position = Vector2(490, 756)
@@ -42,6 +37,14 @@ position = Vector2(1438, 279)
 [node name="Sprite2D" type="Sprite2D" parent="NpcMockmonLocation"]
 texture = ExtResource("6_66ngm")
 offset = Vector2(0, 70)
+
+[node name="Player" parent="." instance=ExtResource("2_p1qf1")]
+position = Vector2(283, 858)
+
+[node name="NpcTrainer" parent="." node_paths=PackedStringArray("mockmon_party", "current_mockmon") instance=ExtResource("3_a12nh")]
+position = Vector2(1411, 18)
+mockmon_party = [NodePath("DrippedOutRat"), NodePath("GuyInACloak"), NodePath("LiteralRock")]
+current_mockmon = NodePath("DrippedOutRat")
 
 [node name="UiBody" type="Control" parent="."]
 anchors_preset = 0
@@ -74,32 +77,97 @@ size_flags_horizontal = 3
 theme_override_font_sizes/normal_font_size = 50
 text = "What will ____ do?"
 
-[node name="HFlowContainer" type="HFlowContainer" parent="UiBody/BattleOptions"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UiBody/BattleOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="UiBody/BattleOptions/HFlowContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UiBody/BattleOptions/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="Fight" type="TextureButton" parent="UiBody/BattleOptions/HFlowContainer"]
+[node name="Fight" type="TextureButton" parent="UiBody/BattleOptions/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("4_a12nh")
+texture_normal = ExtResource("7_22uqi")
+stretch_mode = 0
 
-[node name="Bag(None)" type="TextureButton" parent="UiBody/BattleOptions/HFlowContainer"]
+[node name="Label" type="Label" parent="UiBody/BattleOptions/VBoxContainer/HBoxContainer/Fight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_22uqi")
+theme_override_font_sizes/font_size = 25
+text = "Fight"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Bag(None)" type="TextureButton" parent="UiBody/BattleOptions/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("4_a12nh")
+texture_normal = ExtResource("8_6ni85")
+stretch_mode = 0
 
-[node name="SwitchMockmon" type="TextureButton" parent="UiBody/BattleOptions/HFlowContainer"]
+[node name="Label" type="Label" parent="UiBody/BattleOptions/VBoxContainer/HBoxContainer/Bag(None)"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_22uqi")
+theme_override_font_sizes/font_size = 25
+text = "Cringe"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UiBody/BattleOptions/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SwitchMockmon" type="TextureButton" parent="UiBody/BattleOptions/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("4_a12nh")
+texture_normal = ExtResource("9_vceff")
+stretch_mode = 0
 
-[node name="Run(None)" type="TextureButton" parent="UiBody/BattleOptions/HFlowContainer"]
+[node name="Label" type="Label" parent="UiBody/BattleOptions/VBoxContainer/HBoxContainer2/SwitchMockmon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_22uqi")
+theme_override_font_sizes/font_size = 25
+text = "Mockmon"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Run(None)" type="TextureButton" parent="UiBody/BattleOptions/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("4_a12nh")
+texture_normal = ExtResource("10_ekamt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UiBody/BattleOptions/VBoxContainer/HBoxContainer2/Run(None)"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_22uqi")
+theme_override_font_sizes/font_size = 25
+text = "Run (jk you can't haha)"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="PlayerMonHpBar" type="ProgressBar" parent="UiBody"]
 layout_mode = 0
@@ -118,6 +186,15 @@ offset_right = 588.0
 offset_bottom = 187.0
 step = 1.0
 value = 50.0
+
+[node name="TurnCounterLabel" type="Label" parent="UiBody"]
+layout_mode = 1
+offset_top = 25.0
+offset_right = 1890.0
+offset_bottom = 192.0
+theme_override_font_sizes/font_size = 50
+text = "Turn: 0"
+horizontal_alignment = 1
 
 [node name="SwitchMockmonBox" type="MarginContainer" parent="UiBody"]
 layout_mode = 1
@@ -183,34 +260,28 @@ offset_top = 533.0
 offset_right = 1867.0
 offset_bottom = 1041.0
 
-[node name="TextureRect" type="TextureRect" parent="UiBody/Node2D/AttackOptions"]
-layout_mode = 2
-texture = ExtResource("9_v7i3o")
-
 [node name="VBoxContainer" type="VBoxContainer" parent="UiBody/Node2D/AttackOptions"]
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UiBody/Node2D/AttackOptions/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="MoveCard1" parent="UiBody/Node2D/AttackOptions/VBoxContainer/HBoxContainer" instance=ExtResource("6_6vh42")]
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="MoveCard2" parent="UiBody/Node2D/AttackOptions/VBoxContainer/HBoxContainer" instance=ExtResource("6_6vh42")]
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="UiBody/Node2D/AttackOptions/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="MoveCard3" parent="UiBody/Node2D/AttackOptions/VBoxContainer/HBoxContainer2" instance=ExtResource("6_6vh42")]
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="MoveCard4" parent="UiBody/Node2D/AttackOptions/VBoxContainer/HBoxContainer2" instance=ExtResource("6_6vh42")]
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="HideAttackOptions" type="Button" parent="UiBody/Node2D/AttackOptions/VBoxContainer"]
 layout_mode = 2
@@ -229,17 +300,8 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
-[node name="TurnCounterLabel" type="Label" parent="."]
-layout_mode = 1
-offset_top = 25.0
-offset_right = 1890.0
-offset_bottom = 192.0
-theme_override_font_sizes/font_size = 50
-text = "Turn: 0"
-horizontal_alignment = 1
-
-[connection signal="pressed" from="UiBody/BattleOptions/HFlowContainer/Fight" to="." method="_on_fight_pressed"]
-[connection signal="pressed" from="UiBody/BattleOptions/HFlowContainer/SwitchMockmon" to="." method="_on_switch_mockmon_pressed"]
+[connection signal="pressed" from="UiBody/BattleOptions/VBoxContainer/HBoxContainer/Fight" to="." method="_on_fight_pressed"]
+[connection signal="pressed" from="UiBody/BattleOptions/VBoxContainer/HBoxContainer2/SwitchMockmon" to="." method="_on_switch_mockmon_pressed"]
 [connection signal="pressed" from="UiBody/SwitchMockmonBox/VBoxContainer/HBoxContainer/MockmonCard1" to="." method="_on_mockmon_card_1_pressed"]
 [connection signal="pressed" from="UiBody/SwitchMockmonBox/VBoxContainer/HBoxContainer/MockmonCard2" to="." method="_on_mockmon_card_2_pressed"]
 [connection signal="pressed" from="UiBody/SwitchMockmonBox/VBoxContainer/HBoxContainer2/MockmonCard3" to="." method="_on_mockmon_card_3_pressed"]
