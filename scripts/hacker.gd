@@ -42,9 +42,9 @@ func get_move(move_number: int): ## Returns the mockmon's move
 func take_damage(enemy_atk: int, move_used: move): ## The Mockmon takes damage
 	var damage = 0;
 	if move_used.is_category("special"):
-		damage = Globals.calculate_damage(enemy_atk, BASE_SPEC_DEF, move_used.power, move_used.type, WEAKNESSES, RESISTANCES, IMMUNITIES);
+		damage = Globals.calculate_damage(enemy_atk, BASE_SPEC_DEF, move_used.power, move_used.type, WEAKNESSES, RESISTANCES, IMMUNITIES, move_used.accuracy);
 	elif move_used.is_category("physical"):
-		damage = Globals.calculate_damage(enemy_atk, BASE_DEF, move_used.power, move_used.type, WEAKNESSES, RESISTANCES, IMMUNITIES);
+		damage = Globals.calculate_damage(enemy_atk, BASE_DEF, move_used.power, move_used.type, WEAKNESSES, RESISTANCES, IMMUNITIES, move_used.accuracy);
 	
 	currentHp -= damage;
 	

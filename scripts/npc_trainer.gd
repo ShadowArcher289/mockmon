@@ -22,6 +22,7 @@ func switch_members(mon_out: Node2D, mon_in: Node2D) :
 	var weakness = false;
 	var super_mon;
 	if(mon_in.death == true) : ## If the mon is dead, switch in a different mon with a super effective move
+		current_mockmon.hide();
 		for i in range(mockmon_party.size()) :
 			if mockmon_party[i] == mon_in || mockmon_party[i].death == true:
 				continue;
