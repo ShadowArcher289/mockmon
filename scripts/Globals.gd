@@ -3,7 +3,9 @@ extends Node
 const LEVEL = 50.0;
 
 func calculate_damage(enemy_atk: float, my_defense: float, move_power: float, move_type: String, weaknesses: Array[String], resistances: Array[String], immunities: Array[String], accuracy: int) -> int:
-	var random_integer = randi_range(0, accuracy);
+	var random_integer = randi_range(0, 101);
+	if random_integer > accuracy :
+		return 0
 	var type_modifier = weak_calc(move_type, weaknesses, resistances, immunities);
 	return ceili( ( ((((2.0*LEVEL)/5)+2) * move_power * (enemy_atk/my_defense)) /50.0) + 2) * type_modifier;
 	
