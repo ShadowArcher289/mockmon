@@ -9,11 +9,11 @@ extends Button
 
 func _process(_delta: float) -> void:
 	if current_mockmon != null: # update the mockmon_card for the mockmon's data
-		#mockmon_name.text = current_mockmon.name; # use once Mockmon.gd is made
-		mockmon_name.text = "Name"; # temporary 
-		#mockmon_sprite.texture = preload(current_mockmon.sprite);
-		mockmon_sprite.texture = preload("res://icon.svg");
-		hp_bar = current_mockmon.currentHp;
+		mockmon_name.text = current_mockmon.MOCKMON_NAME; # use once Mockmon.gd is made
+		#mockmon_name.text = "Name"; # temporary 
+		mockmon_sprite.texture = current_mockmon.MOCKMON_SPRITE;
+		#mockmon_sprite.texture = preload("res://icon.svg");
+		hp_bar.value = current_mockmon.currentHp;
 		
 		if current_mockmon.currentHp <= 0:
 			panel.show();

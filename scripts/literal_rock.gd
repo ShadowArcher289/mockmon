@@ -7,6 +7,9 @@ var what_rocks_do = move.new("Rock", 0, "Physical", 30, 80);
 
 const TYPE : Array[String] = ["Rock"];
 
+const MOCKMON_NAME = "Literal Rock";
+const MOCKMON_SPRITE = preload("res://sprites/ALiteralRock.png");
+
 const MAX_HP = 120; # base sats
 const BASE_ATK = 10;
 const BASE_DEF = 20;
@@ -17,7 +20,8 @@ const BASE_SPEED = 50;
 const WEAKNESSES: Array[String] = ["Water", "Ground", "Grass", "Fighting", "Steel"];
 const RESISTANCES: Array[String] = ["Normal", "Flying", "Poison", "Fire"];
 const IMMUNITIES: Array[String] = [];
-var moves
+
+var moves: Array[move];
 
 var currentHp = MAX_HP;
 

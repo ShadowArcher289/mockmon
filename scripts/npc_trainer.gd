@@ -40,7 +40,7 @@ func make_move() :
 		for i in range(mockmon_party.size()) :
 			super_mon = mockmon_party[i]
 			for j in range(current_mockmon.moves.size()) :
-				weakness = Globals.is_weak(super_mon.moves[j], enemy_current_mockmon);
+				weakness = Globals.is_weak(super_mon.moves[j].type, enemy_current_mockmon);
 				if weakness == true :
 					#switch_members()
 					SignalBus.npc_move_finished.emit()

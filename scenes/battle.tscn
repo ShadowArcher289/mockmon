@@ -17,6 +17,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_dn72j")
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+anchor_mode = 0
+
 [node name="Icon4" type="Sprite2D" parent="."]
 position = Vector2(997.5, 557)
 scale = Vector2(17.523438, 10)
@@ -25,12 +30,10 @@ texture = ExtResource("4_a12nh")
 [node name="Player" parent="." instance=ExtResource("2_p1qf1")]
 position = Vector2(283, 858)
 
-[node name="NpcTrainer" parent="." node_paths=PackedStringArray("mockmon_party") instance=ExtResource("3_a12nh")]
+[node name="NpcTrainer" parent="." node_paths=PackedStringArray("mockmon_party", "current_mockmon") instance=ExtResource("3_a12nh")]
 position = Vector2(1411, 18)
 mockmon_party = [NodePath("DrippedOutRat"), NodePath("GuyInACloak"), NodePath("LiteralRock")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
+current_mockmon = NodePath("DrippedOutRat")
 
 [node name="PlayerMockmonLocation" type="Marker2D" parent="."]
 position = Vector2(490, 756)

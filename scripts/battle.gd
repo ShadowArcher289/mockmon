@@ -12,12 +12,12 @@ extends Control
 @onready var player_mockmon_location: Marker2D = $PlayerMockmonLocation
 @onready var npc_mockmon_location: Marker2D = $NpcMockmonLocation
 
-@onready var mockmon_card_1: Button = $MarginContainer/HBoxContainer/VBoxContainer/MockmonCard1
-@onready var mockmon_card_2: Button = $MarginContainer/HBoxContainer/VBoxContainer/MockmonCard2
-@onready var mockmon_card_3: Button = $MarginContainer/HBoxContainer/VBoxContainer/MockmonCard3
-@onready var mockmon_card_4: Button = $MarginContainer/HBoxContainer/VBoxContainer2/MockmonCard4
-@onready var mockmon_card_5: Button = $MarginContainer/HBoxContainer/VBoxContainer2/MockmonCard5
-@onready var mockmon_card_6: Button = $MarginContainer/HBoxContainer/VBoxContainer2/MockmonCard6
+@onready var mockmon_card_1: Button = $SwitchMockmonBox/VBoxContainer/HBoxContainer/MockmonCard1
+@onready var mockmon_card_2: Button = $SwitchMockmonBox/VBoxContainer/HBoxContainer/MockmonCard2
+@onready var mockmon_card_3: Button = $SwitchMockmonBox/VBoxContainer/HBoxContainer2/MockmonCard3
+@onready var mockmon_card_4: Button = $SwitchMockmonBox/VBoxContainer/HBoxContainer2/MockmonCard4
+@onready var mockmon_card_5: Button = $SwitchMockmonBox/VBoxContainer/HBoxContainer3/MockmonCard5
+@onready var mockmon_card_6: Button = $SwitchMockmonBox/VBoxContainer/HBoxContainer3/MockmonCard6
 
 
 var turn_count = 0; ## the turn count
@@ -28,13 +28,22 @@ var player_move_message_index = 0;
 
 func _ready() -> void:
 	battle_options.hide();
+	switch_mockmon_box.hide();
 	
-	mockmon_card_1.current_mockmon = player_trainer.mockmon_party[0];
-	mockmon_card_2.current_mockmon = player_trainer.mockmon_party[1];
-	mockmon_card_3.current_mockmon = player_trainer.mockmon_party[2];
-	mockmon_card_4.current_mockmon = player_trainer.mockmon_party[3];
-	mockmon_card_5.current_mockmon = player_trainer.mockmon_party[4];
-	mockmon_card_6.current_mockmon = player_trainer.mockmon_party[5];
+	var current_player_party = player_trainer.mockmon_party;
+	
+	if current_player_party.size() > 0: # set the mockmon cards
+		mockmon_card_1.current_mockmon = current_player_party[0];
+	if current_player_party.size() > 1:
+		mockmon_card_2.current_mockmon = current_player_party[1];
+	if current_player_party.size() > 2:
+		mockmon_card_3.current_mockmon = current_player_party[2];
+	if current_player_party.size() > 3:
+		mockmon_card_4.current_mockmon = current_player_party[3];
+	if current_player_party.size() > 4:
+		mockmon_card_5.current_mockmon = current_player_party[4];
+	if current_player_party.size() > 5:
+		mockmon_card_6.current_mockmon = current_player_party[5];
 
 	
 	battle(player_trainer, npc_trainer); # start battle automatically
@@ -50,8 +59,8 @@ func battle(player: CharacterBody2D, npc: Node2D) -> void: ## starts a battle be
 	npc_trainer.current_mockmon.global_position = npc_mockmon_location.global_position;
 
 	while battling:
-		player_mon_hp_bar = player_trainer.current_mockmon.currentHp;
-		player_mon_hp_bar = player_trainer.current_mockmon.currentHp;
+		player_mon_hp_bar.value = player_trainer.current_mockmon.currentHp;
+		player_mon_hp_bar.value = player_trainer.current_mockmon.currentHp;
 		
 		# check which player's pokemon has the faster speed, if tied, pick random.
 		if npc.current_mockmon.BASE_SPEED > player.current_mockmon.BASE_SPEED:

@@ -8,8 +8,9 @@
 [node name="World" type="Node2D"]
 script = ExtResource("1_rwgxs")
 
-[node name="NpcTrainer" parent="." instance=ExtResource("2_4wyf3")]
+[node name="NpcTrainer" parent="." node_paths=PackedStringArray("current_mockmon") instance=ExtResource("2_4wyf3")]
 position = Vector2(486, 109)
+current_mockmon = NodePath("DrippedOutRat")
 
 [node name="Player" parent="." node_paths=PackedStringArray("mockmon_party") instance=ExtResource("3_4wyf3")]
 position = Vector2(195, 154)

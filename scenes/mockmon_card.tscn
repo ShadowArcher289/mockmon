@@ -4,9 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://eo8ec1r0fl00" path="res://icon.svg" id="1_8ady5"]
 
 [node name="MockmonCard" type="Button"]
+clip_contents = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -869.0
+offset_bottom = -709.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3

@@ -28,6 +28,10 @@ window/stretch/mode="canvas_items"
 window/stretch/scale=4.01
 window/stretch/scale_mode="integer"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/mockmon/plugin.cfg")
+
 [input]
 
 right={

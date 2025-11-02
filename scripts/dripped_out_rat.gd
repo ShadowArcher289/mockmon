@@ -6,6 +6,9 @@ var aura_farm = move.new("Fire", 80, "Physical", 10, 90);
 
 const TYPE : Array[String] = ["Steel", "Fire"];
 
+const MOCKMON_NAME = "A Dripped Out Rat";
+const MOCKMON_SPRITE = preload("res://sprites/DrippedOutRat.png");
+
 const MAX_HP = 120; # base sats
 const BASE_ATK = 10;
 const BASE_DEF = 20;
@@ -17,7 +20,8 @@ const WEAKNESSES: Array[String] = ["Water", "Ground", "Fighting"];
 const RESISTANCES: Array[String] = ["Normal", "Flying", "Psychic", "Dragon"];
 const IMMUNITIES: Array[String] = ["Poison"];
 
-var moves
+var moves: Array[move];
+
 var currentHp = MAX_HP;
 
 func _ready() -> void:
