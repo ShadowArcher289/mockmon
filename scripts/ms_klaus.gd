@@ -1,9 +1,9 @@
 extends Node2D
 
-var gingerbread_army = move.new("gingerbread_army", "Ground", 70, "Physical", 10, 100)
-var snow_bunny_mind_control = move.new("snow_bunny_mind_control", "Psychic", 130, "Special", 5, 75)
-var elf_legion = move.new("elf_legion", "Grass", 80, "Special", 15, 100)
-var klausrot = move.new("klausrot", "Psychic", 75, "Special", 15, 100)
+var gingerbread_army = move.new("Gingerbread Army", "Ground", 70, "Physical", 10, 100)
+var snow_bunny_mind_control = move.new("Snow Bunny Mind Control", "Psychic", 130, "Special", 5, 75)
+var elf_legion = move.new("Elf Legion", "Grass", 80, "Special", 15, 100)
+var klausrot = move.new("Klaus Brainrot", "Psychic", 75, "Special", 15, 100)
 
 const TYPE : Array[String] = ["Psychic"];
 

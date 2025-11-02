@@ -1,9 +1,9 @@
 extends Node2D
 
-var present_theft = move.new("present_theft", "Dark", 666, "Physical", 1, 66);
-var ninth_circle = move.new("ninth_circle", "Ice", 99, "Special", 9, 99)
-var extinction = move.new("extinction", "Dark", 80, "Special", 10, 100)
-var mind_control = move.new("mind_control", "Psychic", 60, "Special", 15, 85)
+var present_theft = move.new("Present Theft", "Dark", 666, "Physical", 1, 66);
+var ninth_circle = move.new("Ninth Circle", "Ice", 99, "Special", 9, 99)
+var extinction = move.new("Extinction", "Dark", 80, "Special", 10, 100)
+var mind_control = move.new("Mind Control", "Psychic", 60, "Special", 15, 85)
 
 const TYPE : Array[String] = ["Ice", "Dark"];
 
