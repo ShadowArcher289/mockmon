@@ -6,7 +6,7 @@ var aura_farm = move.new("Fire", 80, "Physical", 10, 90);
 
 const TYPE : Array[String] = ["Steel", "Fire"];
 
-const MAX_HP = 120; # base sats
+const MAX_HP = 120; # base stats
 const BASE_ATK = 10;
 const BASE_DEF = 20;
 const BASE_SPEC_ATK = 30;

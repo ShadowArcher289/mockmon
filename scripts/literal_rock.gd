@@ -7,7 +7,7 @@ var what_rocks_do = move.new("Rock", 0, "Physical", 30, 80);
 
 const TYPE : Array[String] = ["Rock"];
 
-const MAX_HP = 120; # base sats
+const MAX_HP = 120; # base stats
 const BASE_ATK = 10;
 const BASE_DEF = 20;
 const BASE_SPEC_ATK = 30;
