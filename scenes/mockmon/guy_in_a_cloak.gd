@@ -19,7 +19,7 @@ const RESISTANCES: Array[String] = ["Normal", "Flying", "Poison", "Fire"];
 const IMMUNITIES: Array[String] = ["Ghost", "Psychic"];
 
 var currentHp = MAX_HP;
-
+var death : bool
 func _ready() -> void:
 	moves = [pocket_knife, alley_jump, pickpocket, flash];
 
@@ -44,4 +44,4 @@ func take_damage(enemy_atk: int, move_used: move): ## The Mockmon takes damage
 	currentHp -= damage;
 	
 	if currentHp <= 0:
-		pass;
+		death = true;
