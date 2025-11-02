@@ -1,4 +1,4 @@
-extends Node2D
+extends Mockmon
 var fling_drip = move.new("Steel", 40, "Physical", 10, 90);
 var sick_burn = move.new("Fire", 30, "Special", 20, 100);
 var do_a_flip = move.new("Psychic", 40, "Special", 10, 90);

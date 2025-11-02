@@ -10,8 +10,8 @@ extends Node2D
 
 
 func _ready() -> void:
-	make_move();
 	enemy_current_mockmon = literal_rock;
+	make_move();
 
 func _process(delta: float) -> void:
 	pass
