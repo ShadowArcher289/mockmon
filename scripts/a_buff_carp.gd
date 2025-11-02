@@ -1,9 +1,9 @@
 extends Node2D
 
-var one_inch_punch = move.new("one_inch_punch", "Fighting", 1000000000, "Physical", 5, 10);
-var fin_flail = move.new("fin_flail", "Water", 80, "Physical", 10, 100);
-var poseidons_splash = move.new("poseidons_splash", "Water", 125, "Special", 5, 70);
-var aquatic_beatdown = move.new("aquatic_beatdown", "Fighting", 95, "Special", 10, 90);
+var one_inch_punch = move.new("One Inch Punch", "Fighting", 1000000000, "Physical", 5, 10);
+var fin_flail = move.new("Fin Flail", "Water", 80, "Physical", 10, 100);
+var poseidons_splash = move.new("Poseidon's Splash", "Water", 125, "Special", 5, 70);
+var aquatic_beatdown = move.new("Aquatic Beatdown", "Fighting", 95, "Special", 10, 90);
 
 const TYPE : Array[String] = ["Water", "Fighting"];
 
