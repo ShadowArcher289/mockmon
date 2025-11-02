@@ -74,6 +74,7 @@ func _ready() -> void:
 	
 	SignalBus.connect("player_done_with_battle", _end_battle_player); # connect done with battle signals
 	SignalBus.connect("npc_done_with_battle", _end_battle_npc);
+	SignalBus.connect("npc_move_finished", _npc_move_finished); # connect npc move_finished signal
 
 
 func battle(player: CharacterBody2D, npc: Node2D) -> void: ## starts a battle between the two characters
@@ -94,6 +95,7 @@ func battle(player: CharacterBody2D, npc: Node2D) -> void: ## starts a battle be
 		npc_mon_hp_bar.value = npc_trainer.current_mockmon.currentHp;
 		
 		next_dialog();
+		npc.make_move();
 		
 		# check which player's pokemon has the faster speed, if tied, pick random.
 		if npc.current_mockmon.BASE_SPEED > player.current_mockmon.BASE_SPEED:
@@ -162,6 +164,12 @@ func _end_battle_player() -> void: ## player lost/quit the battle
 func _end_battle_npc() -> void: ## npc lost/quit the battle
 	battling = false;
 	print_debug("Player Won! in [" + turn_count + "] turns!");
+
+func _npc_move_finished(move_description: String):
+	print(move_description)
+	if move_description != null:
+		player_move_messages.append(move_description);
+		next_dialog();
 
 
 func _on_fight_pressed() -> void:
