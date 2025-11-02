@@ -1,6 +1,6 @@
 extends Node2D
 
-var pocket_knife = move.new("Pocket Knife", "Steel", 100000000, "Physical", 5, 20);
+var pocket_knife = move.new("Pocket Knife", "Steel", 100000000, "Physical", 1, 20);
 var alley_jump = move.new("Alley Jump", "Dark", 50, "Physical", 15, 100);
 var pickpocket = move.new("Pickpocket", "Normal", 80, "Physical", 10, 95);
 var flash = move.new("Flash", "Psychic", 100, "Special", 10, 80);

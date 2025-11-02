@@ -8,6 +8,8 @@ var aquatic_beatdown = move.new("aquatic_beatdown", "Fighting", 95, "Special", 1
 const TYPE : Array[String] = ["Water", "Fighting"];
 
 const MOCKMON_NAME = "A Buff Carp";
+const MOCKMON_SPRITE = preload("res://sprites/BuffCarp.png");
+
 
 const MAX_HP = 50; # base stats
 const BASE_ATK = 130;

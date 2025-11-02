@@ -1,9 +1,13 @@
-[gd_scene load_steps=32 format=3 uid="uid://5k07bj3wni8h"]
+[gd_scene load_steps=36 format=3 uid="uid://5k07bj3wni8h"]
 
 [ext_resource type="Texture2D" uid="uid://vfj82j4iwy7o" path="res://sprites/Main Character Male.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dj7sk3k2b4kxh" path="res://player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://c0jarsdt2wjtd" path="res://scenes/mockmon/literal_rock.tscn" id="3_dqkch"]
 [ext_resource type="PackedScene" uid="uid://blx24epx1ubvt" path="res://scenes/mockmon/dripped_out_rat.tscn" id="4_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://dnoje2jrvaxqc" path="res://scenes/mockmon/krampus.tscn" id="5_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://b12h0m64itvvj" path="res://scenes/mockmon/a_buff_carp.tscn" id="6_smehm"]
+[ext_resource type="PackedScene" uid="uid://c7uwuvrwffju5" path="res://scenes/mockmon/guy_in_a_cloak.tscn" id="7_ur7pv"]
+[ext_resource type="PackedScene" uid="uid://scr6hnxl17x" path="res://scenes/mockmon/little_eleves.tscn" id="8_y4r1p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8vuu"]
 
@@ -222,7 +226,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("mockmon_party", "current_mockmon")]
 script = ExtResource("1_g2els")
-mockmon_party = [NodePath("LiteralRock"), NodePath("DrippedOutRat")]
+mockmon_party = [NodePath("LiteralRock"), NodePath("DrippedOutRat"), NodePath("Krampus"), NodePath("A_Buff_Carp"), NodePath("GuyInACloak"), NodePath("Little_Eleves")]
 current_mockmon = NodePath("LiteralRock")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -241,3 +245,15 @@ position = Vector2(676, 230)
 [node name="DrippedOutRat" parent="." instance=ExtResource("4_qlg0r")]
 visible = false
 position = Vector2(799, 96)
+
+[node name="Krampus" parent="." instance=ExtResource("5_qlg0r")]
+visible = false
+
+[node name="A_Buff_Carp" parent="." instance=ExtResource("6_smehm")]
+visible = false
+
+[node name="GuyInACloak" parent="." instance=ExtResource("7_ur7pv")]
+visible = false
+
+[node name="Little_Eleves" parent="." instance=ExtResource("8_y4r1p")]
+visible = false
