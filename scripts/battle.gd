@@ -79,10 +79,6 @@ func _ready() -> void:
 	move_card_2.current_move = player_trainer.current_mockmon.moves[1];
 	move_card_3.current_move = player_trainer.current_mockmon.moves[2];
 	move_card_4.current_move = player_trainer.current_mockmon.moves[3];
-	move_card_1.add_theme_color_override("font_color", Color(0.004, 0.003, 0.0, 1.0));
-	move_card_2.add_theme_color_override("font_color", Color(0.0, 0.0, 0.0, 1.0));
-	move_card_3.add_theme_color_override("font_color", Color(0.0, 0.0, 0.0, 1.0));
-	move_card_4.add_theme_color_override("font_color", Color(0.0, 0.0, 0.0, 1.0));
 	
 	battle(player_trainer, npc_trainer); # start battle automatically
 
@@ -92,8 +88,8 @@ func _process(_delta: float) -> void:
 		await player_move_finished_timer.timeout;
 		
 	for mon in npc_trainer.mockmon_party: # loop through every npc mon, if it is not the current, and it is not hidden, hide it.
-		if mon != npc_trainer.current_mockmon && !mon.is_visible_in_tree():
-			mon = false;
+		if mon != npc_trainer.current_mockmon && mon.is_visible_in_tree():
+			mon.hide();
 
 func battle(player: CharacterBody2D, npc: Node2D) -> void: ## starts a battle between the two characters
 	player_trainer.current_mockmon.show(); # set the mockmon's locations

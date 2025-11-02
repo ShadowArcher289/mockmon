@@ -33,6 +33,7 @@ func use_move(move_choice: move, target: Node2D): ## Use a move on a given targe
 			target.take_damage(BASE_SPEC_ATK, move_choice);
 		elif move_choice.is_category("physical"):
 			target.take_damage(BASE_ATK, move_choice);
+		#move_choice.pp -= 1;
 
 
 func get_move(move_number: int): ## Returns the mockmon's move

@@ -50,7 +50,7 @@ func is_resist(moveType: String, mon: Node2D) -> bool:
 			if mon.RESISTANCES[i] == moveType :
 				count +=1
 		for i in range(mon.WEAKNESSES.size() - 1) :
-			if mon.RESISTANCES[i] == moveType :
+			if mon.WEAKNESSES[i] == moveType :
 				count -=1
 		if count > 0 :
 			return true
@@ -64,7 +64,7 @@ func is_neutral(moveType: String, mon : Mockmon) -> bool:
 			if mon.RESISTANCES[i] == moveType :
 				count +=1
 		for i in range(mon.WEAKNESSES.size() - 1) :
-			if mon.RESISTANCES[i] == moveType :
+			if mon.WEAKNESSES[i] == moveType :
 				count -=1
 		if count == 0 :
 			return true

@@ -65,3 +65,10 @@ layout_mode = 2
 step = 1.0
 value = 50.0
 show_percentage = false
+
+[node name="MockmonTypes" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 50
+text = "Mockmon Types"
+horizontal_alignment = 1
