@@ -29,7 +29,7 @@ extends Control
 
 @onready var npc_move_finished_timer: Timer = $NpcMoveFinishedTimer
 @onready var player_move_finished_timer: Timer = $PlayerMoveFinishedTimer
-@onready var turn_counter_label: Label = $TurnCounterLabel
+@onready var turn_counter_label: Label = $UiBody/TurnCounterLabel
 
 
 var turn_count = 0; ## the turn count
