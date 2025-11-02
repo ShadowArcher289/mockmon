@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd73d42b80s57"]
+[gd_scene load_steps=7 format=3 uid="uid://cd73d42b80s57"]
 
 [ext_resource type="Script" uid="uid://dcspi46o52gy1" path="res://scripts/battle.gd" id="1_dn72j"]
 [ext_resource type="PackedScene" uid="uid://5k07bj3wni8h" path="res://scenes/player.tscn" id="2_p1qf1"]
 [ext_resource type="PackedScene" uid="uid://c7jpgjkp1nlkp" path="res://scenes/npc_trainer.tscn" id="3_a12nh"]
 [ext_resource type="Texture2D" uid="uid://eo8ec1r0fl00" path="res://icon.svg" id="4_a12nh"]
 [ext_resource type="PackedScene" uid="uid://bn5sclhri6jpd" path="res://scenes/mockmon_card.tscn" id="5_lpir7"]
+[ext_resource type="PackedScene" uid="uid://d32mw3tpoq32e" path="res://scenes/move_card.tscn" id="6_6vh42"]
 
 [node name="Battle" type="Control"]
 layout_mode = 3
@@ -93,7 +94,6 @@ offset_right = 1796.0
 offset_bottom = 768.0
 step = 1.0
 value = 50.0
-show_percentage = false
 
 [node name="NpcMonHpBar" type="ProgressBar" parent="UiBody"]
 layout_mode = 0
@@ -103,7 +103,6 @@ offset_right = 588.0
 offset_bottom = 187.0
 step = 1.0
 value = 50.0
-show_percentage = false
 
 [node name="SwitchMockmonBox" type="MarginContainer" parent="UiBody"]
 layout_mode = 1
@@ -160,6 +159,44 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
 text = "Back"
 
+[node name="Node2D" type="Node2D" parent="UiBody"]
+
+[node name="AttackOptions" type="MarginContainer" parent="UiBody/Node2D"]
+offset_left = 951.0
+offset_top = 533.0
+offset_right = 1867.0
+offset_bottom = 1041.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UiBody/Node2D/AttackOptions"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UiBody/Node2D/AttackOptions/VBoxContainer"]
+layout_mode = 2
+
+[node name="MoveCard1" parent="UiBody/Node2D/AttackOptions/VBoxContainer/HBoxContainer" instance=ExtResource("6_6vh42")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MoveCard2" parent="UiBody/Node2D/AttackOptions/VBoxContainer/HBoxContainer" instance=ExtResource("6_6vh42")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UiBody/Node2D/AttackOptions/VBoxContainer"]
+layout_mode = 2
+
+[node name="MoveCard3" parent="UiBody/Node2D/AttackOptions/VBoxContainer/HBoxContainer2" instance=ExtResource("6_6vh42")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MoveCard4" parent="UiBody/Node2D/AttackOptions/VBoxContainer/HBoxContainer2" instance=ExtResource("6_6vh42")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HideAttackOptions" type="Button" parent="UiBody/Node2D/AttackOptions/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Back"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 zoom = Vector2(0.25, 0.25)
@@ -173,3 +210,8 @@ zoom = Vector2(0.25, 0.25)
 [connection signal="pressed" from="UiBody/SwitchMockmonBox/VBoxContainer/HBoxContainer3/MockmonCard5" to="." method="_on_mockmon_card_5_pressed"]
 [connection signal="pressed" from="UiBody/SwitchMockmonBox/VBoxContainer/HBoxContainer3/MockmonCard6" to="." method="_on_mockmon_card_6_pressed"]
 [connection signal="pressed" from="UiBody/SwitchMockmonBox/VBoxContainer/HideSwitchMockmon" to="." method="_on_hide_switch_mockmon_pressed"]
+[connection signal="pressed" from="UiBody/Node2D/AttackOptions/VBoxContainer/HBoxContainer/MoveCard1" to="." method="_on_move_card_1_pressed"]
+[connection signal="pressed" from="UiBody/Node2D/AttackOptions/VBoxContainer/HBoxContainer/MoveCard2" to="." method="_on_move_card_2_pressed"]
+[connection signal="pressed" from="UiBody/Node2D/AttackOptions/VBoxContainer/HBoxContainer2/MoveCard3" to="." method="_on_move_card_3_pressed"]
+[connection signal="pressed" from="UiBody/Node2D/AttackOptions/VBoxContainer/HBoxContainer2/MoveCard4" to="." method="_on_move_card_4_pressed"]
+[connection signal="pressed" from="UiBody/Node2D/AttackOptions/VBoxContainer/HideAttackOptions" to="." method="_on_hide_attack_options_pressed"]

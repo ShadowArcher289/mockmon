@@ -4,6 +4,7 @@ extends Control
 @onready var npc_trainer: Node2D = $NpcTrainer
 
 @onready var battle_options: HBoxContainer = $UiBody/BattleOptions
+@onready var attack_options: MarginContainer = $UiBody/Node2D/AttackOptions
 @onready var switch_mockmon_box: MarginContainer = $UiBody/SwitchMockmonBox
 
 @onready var player_mon_hp_bar: ProgressBar = $UiBody/PlayerMonHpBar
@@ -18,6 +19,11 @@ extends Control
 @onready var mockmon_card_4: Button = $UiBody/SwitchMockmonBox/VBoxContainer/HBoxContainer2/MockmonCard4
 @onready var mockmon_card_5: Button = $UiBody/SwitchMockmonBox/VBoxContainer/HBoxContainer3/MockmonCard5
 @onready var mockmon_card_6: Button = $UiBody/SwitchMockmonBox/VBoxContainer/HBoxContainer3/MockmonCard6
+
+@onready var move_card_1: TextureButton = $UiBody/Node2D/AttackOptions/VBoxContainer/HBoxContainer/MoveCard1
+@onready var move_card_2: TextureButton = $UiBody/Node2D/AttackOptions/VBoxContainer/HBoxContainer/MoveCard2
+@onready var move_card_3: TextureButton = $UiBody/Node2D/AttackOptions/VBoxContainer/HBoxContainer2/MoveCard3
+@onready var move_card_4: TextureButton = $UiBody/Node2D/AttackOptions/VBoxContainer/HBoxContainer2/MoveCard4
 
 @onready var dialog_label: RichTextLabel = $UiBody/BattleOptions/MarginContainer/DialogLabel
 
@@ -39,6 +45,7 @@ func next_dialog(): ## progress to the next dialog if one is available
 
 func _ready() -> void:
 	battle_options.show();
+	attack_options.hide();
 	switch_mockmon_box.hide();
 	
 	var current_player_party = player_trainer.mockmon_party;
@@ -55,6 +62,12 @@ func _ready() -> void:
 		mockmon_card_5.current_mockmon = current_player_party[4];
 	if current_player_party.size() > 5:
 		mockmon_card_6.current_mockmon = current_player_party[5];
+	
+	move_card_1.current_move = player_trainer.current_mockmon.moves[0]; # set the mockmon's move options
+	move_card_2.current_move = player_trainer.current_mockmon.moves[1];
+	move_card_3.current_move = player_trainer.current_mockmon.moves[2];
+	move_card_4.current_move = player_trainer.current_mockmon.moves[3];
+
 
 	
 	battle(player_trainer, npc_trainer); # start battle automatically
@@ -75,8 +88,10 @@ func battle(player: CharacterBody2D, npc: Node2D) -> void: ## starts a battle be
 		player_trainer.current_mockmon.global_position = player_mockmon_location.global_position;
 		npc_trainer.current_mockmon.global_position = npc_mockmon_location.global_position;
 	
-		player_mon_hp_bar.value = player_trainer.current_mockmon.currentHp; # set hp bars
-		player_mon_hp_bar.value = player_trainer.current_mockmon.currentHp;
+		player_mon_hp_bar.max_value = player_trainer.current_mockmon.MAX_HP; # set hp bar max values
+		npc_mon_hp_bar.max_value = npc_trainer.current_mockmon.MAX_HP;
+		player_mon_hp_bar.value = player_trainer.current_mockmon.currentHp; # set hp bar values
+		npc_mon_hp_bar.value = npc_trainer.current_mockmon.currentHp;
 		
 		next_dialog();
 		
@@ -110,10 +125,6 @@ func player_make_move():
 	battle_options.show();
 	player_move_messages = []; ## messages that the game will display before a move is done.
 	player_move_message_index = 0;
-	
-
-func _on_fight_pressed() -> void:
-	pass # Replace with function body.
 
 
 func player_switch_mon(mon_team_number: int) -> void: ## switch the current mon from selected mon in party.
@@ -126,7 +137,23 @@ func player_switch_mon(mon_team_number: int) -> void: ## switch the current mon 
 		next_dialog();
 		player_trainer.current_mockmon.show(); # set the mockmon's locations
 		player_trainer.current_mockmon.global_position = player_mockmon_location.global_position;
+		SignalBus.player_move_finished.emit();
+
+func player_mon_atk(move_number: int, target: Node2D):
+	var used_move = player_trainer.current_mockmon.get_move(move_number);
+	player_move_messages.append(player_trainer.current_mockmon.MOCKMON_NAME + " used " + used_move.move_name + "!");
+	next_dialog();
+	player_trainer.current_mockmon.use_move(used_move, target);
+	attack_options.hide();
 	
+	player_mon_hp_bar.max_value = player_trainer.current_mockmon.MAX_HP; # set hp bar max values
+	npc_mon_hp_bar.max_value = npc_trainer.current_mockmon.MAX_HP;
+	player_mon_hp_bar.value = player_trainer.current_mockmon.currentHp; # set hp bar values
+	npc_mon_hp_bar.value = npc_trainer.current_mockmon.currentHp;
+		
+	SignalBus.player_move_finished.emit();
+	
+
 
 func _end_battle_player() -> void: ## player lost/quit the battle
 	battling = false;
@@ -137,10 +164,13 @@ func _end_battle_npc() -> void: ## npc lost/quit the battle
 	print_debug("Player Won! in [" + turn_count + "] turns!");
 
 
+func _on_fight_pressed() -> void:
+	attack_options.show();
+
 func _on_switch_mockmon_pressed() -> void:
 	switch_mockmon_box.show();
 
-
+ # Switch Mockmon Buttons
 func _on_mockmon_card_1_pressed() -> void:
 	switch_mockmon_box.hide();
 	player_switch_mon(1)
@@ -165,5 +195,22 @@ func _on_mockmon_card_6_pressed() -> void:
 	switch_mockmon_box.hide();
 	player_switch_mon(6);
 
+ # Hide Battle UI Submenues
 func _on_hide_switch_mockmon_pressed() -> void:
 	switch_mockmon_box.hide();
+
+func _on_hide_attack_options_pressed() -> void:
+	attack_options.hide();
+
+ # Attack with Mockmon Buttons
+func _on_move_card_1_pressed() -> void:
+	player_mon_atk(1, npc_trainer.current_mockmon);
+
+func _on_move_card_2_pressed() -> void:
+	player_mon_atk(2, npc_trainer.current_mockmon);
+
+func _on_move_card_3_pressed() -> void:
+	player_mon_atk(3, npc_trainer.current_mockmon);
+
+func _on_move_card_4_pressed() -> void:
+	player_mon_atk(4, npc_trainer.current_mockmon);

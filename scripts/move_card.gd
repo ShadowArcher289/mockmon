@@ -5,4 +5,4 @@ extends TextureButton
 
 func _process(_delta: float) -> void:
 	if current_move != null: # update the mockmon_card for the mockmon's data
-		label.text = current_move.move_name;
+		label.text = "name: " + current_move.move_name + "\ntype: " + current_move.type;

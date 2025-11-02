@@ -28,13 +28,13 @@ var currentHp = MAX_HP;
 func _ready() -> void:
 	moves = [rock_slam, intimidating_stare, rock_throw, what_rocks_do];
 
-func use_move(move_number: int, target: Node2D): ## Use a move on a given target given the move number
-	var target_move = moves[move_number-1];
+func use_move(move_choice: move, target: Node2D): ## Use a move on a given target given a move 
 	if target.has_method("take_damage"):
-		if target_move.is_category("special"):
-			target.take_damage(BASE_SPEC_ATK, target_move);
-		elif target_move.is_category("physical"):
-			target.take_damage(BASE_ATK, target_move);
+		if move_choice.is_category("special"):
+			target.take_damage(BASE_SPEC_ATK, move_choice);
+		elif move_choice.is_category("physical"):
+			target.take_damage(BASE_ATK, move_choice);
+
 
 func get_move(move_number: int): ## Returns the mockmon's move
 	return moves[move_number-1];
