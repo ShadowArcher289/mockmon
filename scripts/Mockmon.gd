@@ -33,13 +33,12 @@ func _init(input_name : String, input_sprite : String, input_type : Array[String
 	self.moves = input_moves;
 	self.current_hp = input_current_hp;
 	
-func use_move(move_number: int, target: Node2D): ## Use a move on a given target given the move number
-	var target_move = moves[move_number-1];
+func use_move(move_choice: move, target: Node2D): ## Use a move on a given target given the move number
 	if target.has_method("take_damage"):
-		if target_move.is_category("special"):
-			target.take_damage(base_spec_atk, target_move);
-		elif target_move.is_category("physical"):
-			target.take_damage(base_atk, target_move);
+		if move_choice.is_category("special"):
+			target.take_damage(base_spec_atk, move_choice);
+		elif move_choice.is_category("physical"):
+			target.take_damage(base_atk, move_choice);
 
 func get_move(move_number: int): ## Returns the mockmon's move
 	return moves[move_number-1];

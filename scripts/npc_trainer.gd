@@ -18,39 +18,51 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	pass
-
+func switch_members(mon_out: Node2D, mon_in: Node2D) :
+	if(mon_out == null) :
+		var random_integer = randi_range(0, 5);
+		while(mockmon_party[random_integer] == mon_in) :
+			random_integer = randi_range(0, 5);
+		current_mockmon = mockmon_party[random_integer];
+		SignalBus.npc_move_finished.emit()
+	else :
+		current_mockmon = mon_out
+		SignalBus.npc_move_finished.emit()
+			
+	
+		
 func make_move() :
 	var weakness = false
 	var resistance = false
 	var good_move = "";
 	var super_mon;
 	var chosen_move;
-	for i in range(current_mockmon.moves.size()) :
+	for i in range(current_mockmon.moves.size()) : ## iterates through AI trainer's moves
 		weakness = Globals.is_weak(current_mockmon.moves[i].type, enemy_current_mockmon);
 		if weakness == true :
-			good_move = current_mockmon.moves[i];
+			good_move = current_mockmon.moves[i]; ## If they have a move that's super-effective, attack
 			if good_move.is_category("special") :
-				enemy_current_mockmon.take_damage(current_mockmon.BASE_SPEC_ATK, good_move)
+				current_mockmon.use_move(good_move, enemy_current_mockmon)
 				SignalBus.npc_move_finished.emit()	
 			else :
-				enemy_current_mockmon.take_damage(current_mockmon.BASE_ATK, good_move)
+				enemy_current_mockmon.use_move(good_move, enemy_current_mockmon)
 				SignalBus.npc_move_finished.emit()
 					
-	if weakness == false :
+	if weakness == false : ## If the current mon has no super-effective moves, check for its party member
 		for i in range(mockmon_party.size()) :
 			super_mon = mockmon_party[i]
 			for j in range(current_mockmon.moves.size()) :
 				weakness = Globals.is_weak(super_mon.moves[j].type, enemy_current_mockmon);
-				if weakness == true :
-					#switch_members()
+				if weakness == true : ## If a different mon in the party has a super effective move, switch to that mon (whichever comes first)
+					switch_members(current_mockmon, super_mon)
 					SignalBus.npc_move_finished.emit()
-	if weakness == false :
+	if weakness == false : ## If no mons in the party have super effective moves, check for resistances 
 		for i in range(current_mockmon.moves.size()) :
 			resistance = Globals.is_resist(current_mockmon.moves[i].type, enemy_current_mockmon)
-			if resistance == true :
-				#switch_members()
+			if resistance == true : ## If the player's mon resists any of the current AI trainer's moves, switch out to a random pokemon
+				switch_members(current_mockmon, null)
 				SignalBus.npc_move_finished.emit()
-	else :
+	else : ## If none of these are true, the AI will just use a random move
 		var random_integer = randi_range(1, 4);
 		chosen_move = current_mockmon.moves[random_integer];
 		if chosen_move.is_category("special") :
