@@ -38,15 +38,15 @@ func switch_members(mon_out: Node2D, mon_in: Node2D) :
 					return;
 		if(weakness == false) :	 ## If no other mon has a super effective move, randomly send in another mon
 			var random_integer = randi_range(0, mockmon_party.size()-1);
-			while(mockmon_party[random_integer] == mon_in) :
+			while(mockmon_party[random_integer] == mon_in && mockmon_party[random_integer].death == false) :
 				random_integer = randi_range(0, mockmon_party.size()-1);
-			current_mockmon = mockmon_party[random_integer];
 			current_mockmon.hide();
+			current_mockmon = mockmon_party[random_integer];
 			SignalBus.npc_move_finished.emit("NPC switched to " + current_mockmon.MOCKMON_NAME)
 			return;
 	if(mon_out == null) : ## If there isn't another mon to send out, randomly send a mon out
 		var random_integer = randi_range(0, mockmon_party.size()-1);
-		while(mockmon_party[random_integer] == mon_in) :
+		while(mockmon_party[random_integer] == mon_in && mockmon_party[random_integer].death == false) :
 			random_integer = randi_range(0, mockmon_party.size()-1);
 		current_mockmon.hide();
 		current_mockmon = mockmon_party[random_integer];
