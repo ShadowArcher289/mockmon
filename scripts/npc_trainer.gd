@@ -91,6 +91,8 @@ func make_move(enemy_mockmon: Node2D) :
 	if weakness == false : ## If the current mon has no super-effective moves, check for its party member
 		for i in range(mockmon_party.size()):
 			super_mon = mockmon_party[i]
+			if super_mon.death == true :
+				continue
 			for j in range(current_mockmon.moves.size()):
 				weakness = Globals.is_weak(super_mon.moves[j].type, enemy_current_mockmon);
 				if weakness == true: ## If a different mon in the party has a super effective move, switch to that mon (whichever comes first)
