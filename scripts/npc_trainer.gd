@@ -1,11 +1,11 @@
 extends Node2D
 
-@onready var literal_rock: Node2D = $LiteralRock
-@onready var dripped_out_rat: Node2D = $DrippedOutRat
+@onready var literal_rock: Node = $LiteralRock
+@onready var dripped_out_rat: Node = $DrippedOutRat
 
 @export var mockmon_party: Array[Node] = [];
 
-@export var current_mockmon: Node2D = dripped_out_rat
+@export var current_mockmon: Node = dripped_out_rat
 
 @export var enemy_current_mockmon: Node = literal_rock;
 
@@ -16,7 +16,7 @@ func _ready() -> void:
 	make_move();
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func make_move() :
