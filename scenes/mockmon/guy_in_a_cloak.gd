@@ -4,10 +4,10 @@ var pocket_knife = move.new("Steel", 100000000, "Physical", 5, 20);
 var alley_jump = move.new("Dark", 50, "Physical", 15, 100);
 var pickpocket = move.new("Normal", 80, "Physical", 10, 95);
 var flash = move.new("Psychic", 100, "Special", 10, 80);
-
+var moves
 const TYPE : Array[String] = ["Normal", "Dark"];
 
-const MAX_HP = 80; # base sats
+const MAX_HP = 80; # base stats
 const BASE_ATK = 80;
 const BASE_DEF = 110;
 const BASE_SPEC_ATK = 40;
@@ -16,6 +16,32 @@ const BASE_SPEED = 20;
 
 const WEAKNESSES: Array[String] = ["Water", "Ground", "Grass", "Fighting", "Steel"];
 const RESISTANCES: Array[String] = ["Normal", "Flying", "Poison", "Fire"];
-const IMMUNITIES: Array[String] = [];
+const IMMUNITIES: Array[String] = ["Ghost", "Psychic"];
 
 var currentHp = MAX_HP;
+
+func _ready() -> void:
+	moves = [pocket_knife, alley_jump, pickpocket, flash];
+
+func use_move(move_number: int, target: Node2D): ## Use a move on a given target given the move number
+	var target_move = moves[move_number-1];
+	if target.has_method("take_damage"):
+		if target_move.is_category("special"):
+			target.take_damage(BASE_SPEC_ATK, target_move);
+		elif target_move.is_category("physical"):
+			target.take_damage(BASE_ATK, target_move);
+
+func get_move(move_number: int): ## Returns the mockmon's move
+	return moves[move_number-1];
+
+func take_damage(enemy_atk: int, move_used: move): ## The Mockmon takes damage
+	var damage = 0;
+	if move_used.is_category("special"):
+		damage = Globals.calculate_damage(enemy_atk, BASE_SPEC_DEF, move_used.power, move_used.type, WEAKNESSES, RESISTANCES, IMMUNITIES);
+	elif move_used.is_category("physical"):
+		damage = Globals.calculate_damage(enemy_atk, BASE_DEF, move_used.power, move_used.type, WEAKNESSES, RESISTANCES, IMMUNITIES);
+	
+	currentHp -= damage;
+	
+	if currentHp <= 0:
+		pass;
