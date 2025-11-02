@@ -18,7 +18,7 @@ mockmon_party = []
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-
 [node name="DrippedOutRat" parent="." instance=ExtResource("4_k0juu")]
 position = Vector2(584, 149)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
