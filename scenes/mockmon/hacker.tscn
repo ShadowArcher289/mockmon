@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://d23l258qo0beq"]
+[gd_scene load_steps=3 format=3 uid="uid://bde4v8x8uufla"]
 
-[ext_resource type="Script" uid="uid://inwxcndgihsj" path="res://scripts/hacker.gd" id="1_3watr"]
-[ext_resource type="Texture2D" uid="uid://eo8ec1r0fl00" path="res://icon.svg" id="2_bw1sh"]
+[ext_resource type="Script" path="res://scripts/hacker.gd" id="1_3watr"]
+[ext_resource type="Texture2D" uid="uid://c5nx2xgmn6ayx" path="res://sprites/Hacker.png" id="2_3watr"]
 
 [node name="Hacker" type="Node2D"]
 script = ExtResource("1_3watr")
 
 [node name="Icon" type="Sprite2D" parent="."]
-texture = ExtResource("2_bw1sh")
+texture = ExtResource("2_3watr")

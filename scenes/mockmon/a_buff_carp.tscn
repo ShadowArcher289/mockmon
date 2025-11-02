@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://b12h0m64itvvj"]
 
-[ext_resource type="Script" path="res://scripts/a_buff_carp.gd" id="1_kecok"]
-[ext_resource type="Texture2D" uid="uid://eo8ec1r0fl00" path="res://icon.svg" id="2_706be"]
+[ext_resource type="Script" uid="uid://dsn8g4dlbxa46" path="res://scripts/a_buff_carp.gd" id="1_kecok"]
+[ext_resource type="Texture2D" uid="uid://bwncjmtclaixy" path="res://sprites/BuffCarp.png" id="2_kecok"]
 
 [node name="A_Buff_Carp" type="Node2D"]
 script = ExtResource("1_kecok")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(2, -3)
-texture = ExtResource("2_706be")
+texture = ExtResource("2_kecok")

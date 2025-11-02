@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnoje2jrvaxqc"]
 
-[ext_resource type="Script" path="res://scripts/krampus.gd" id="1_6mf18"]
-[ext_resource type="Texture2D" uid="uid://eo8ec1r0fl00" path="res://icon.svg" id="2_ww01h"]
+[ext_resource type="Script" uid="uid://ck5x7k5c2qvkh" path="res://scripts/krampus.gd" id="1_6mf18"]
+[ext_resource type="Texture2D" uid="uid://dfltwayq53spt" path="res://sprites/Krampus.png" id="2_ww01h"]
 
 [node name="Krampus" type="Node2D"]
 script = ExtResource("1_6mf18")
