@@ -31,6 +31,7 @@ extends Control
 @onready var player_move_finished_timer: Timer = $PlayerMoveFinishedTimer
 @onready var turn_counter_label: Label = $TurnCounterLabel
 
+
 var turn_count = 0; ## the turn count
 var battling = true;
 
@@ -49,6 +50,7 @@ func next_dialog(): ## progress to the next dialog if one is available
 
 
 func _ready() -> void:
+	
 	SignalBus.connect("player_done_with_battle", _end_battle_player); # connect done with battle signals
 	SignalBus.connect("npc_done_with_battle", _end_battle_npc);
 	SignalBus.connect("npc_move_finished", _npc_move_finished); # connect npc move_finished signal
@@ -77,7 +79,10 @@ func _ready() -> void:
 	move_card_2.current_move = player_trainer.current_mockmon.moves[1];
 	move_card_3.current_move = player_trainer.current_mockmon.moves[2];
 	move_card_4.current_move = player_trainer.current_mockmon.moves[3];
-	
+	move_card_1.add_theme_color_override("font_color", Color(0.004, 0.003, 0.0, 1.0));
+	move_card_2.add_theme_color_override("font_color", Color(0.0, 0.0, 0.0, 1.0));
+	move_card_3.add_theme_color_override("font_color", Color(0.0, 0.0, 0.0, 1.0));
+	move_card_4.add_theme_color_override("font_color", Color(0.0, 0.0, 0.0, 1.0));
 	
 	battle(player_trainer, npc_trainer); # start battle automatically
 
