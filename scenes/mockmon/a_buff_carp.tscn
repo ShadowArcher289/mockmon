@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbv18at2c0ty2"]
+[gd_scene load_steps=3 format=3 uid="uid://b12h0m64itvvj"]
 
-[ext_resource type="Script" uid="uid://dsn8g4dlbxa46" path="res://scripts/a_buff_carp.gd" id="1_kecok"]
+[ext_resource type="Script" path="res://scripts/a_buff_carp.gd" id="1_kecok"]
 [ext_resource type="Texture2D" uid="uid://eo8ec1r0fl00" path="res://icon.svg" id="2_706be"]
 
 [node name="A_Buff_Carp" type="Node2D"]

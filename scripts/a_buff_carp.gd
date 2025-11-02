@@ -7,7 +7,7 @@ var aquatic_beatdown = move.new("aquatic_beatdown", "Fighting", 95, "Special", 1
 
 const TYPE : Array[String] = ["Water", "Fighting"];
 
-const MOCKMON_NAME = "a_buff_carp";
+const MOCKMON_NAME = "A Buff Carp";
 
 const MAX_HP = 50; # base stats
 const BASE_ATK = 130;

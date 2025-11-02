@@ -2867,6 +2867,7 @@ position = Vector2(194, 156)
 mockmon_party = []
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(8, 8)
 
 [node name="DrippedOutRat" parent="." instance=ExtResource("4_k0juu")]
 position = Vector2(584, 149)

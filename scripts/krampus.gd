@@ -7,7 +7,7 @@ var mind_control = move.new("mind_control", "Psychic", 60, "Special", 15, 85)
 
 const TYPE : Array[String] = ["Ice", "Dark"];
 
-const MOCKMON_NAME = "krampus";
+const MOCKMON_NAME = "Krampus";
 
 const MAX_HP = 50; # base stats
 const BASE_ATK = 1;

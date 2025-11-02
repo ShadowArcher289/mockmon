@@ -289,7 +289,7 @@ theme_override_font_sizes/font_size = 40
 text = "Back"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(950, 538)
+anchor_mode = 0
 
 [node name="NpcMoveFinishedTimer" type="Timer" parent="."]
 wait_time = 0.5

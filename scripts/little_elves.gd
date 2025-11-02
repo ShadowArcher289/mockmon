@@ -6,7 +6,7 @@ var in_a_hat = move.new("in_a_hat", "Normal", 77, "Physical", 10, 100)
 var in_a_bath = move.new("in_a_bath", "Grass", 100, "Physical", 5, 100)
 const TYPE : Array[String] = ["Normal", "Grass"];
 
-const MOCKMON_NAME = "krampus";
+const MOCKMON_NAME = "Little Elves";
 
 const MAX_HP = 130; # base stats
 const BASE_ATK = 50;
