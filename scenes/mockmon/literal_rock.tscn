@@ -5,6 +5,7 @@
 
 [node name="LiteralRock" type="Node2D"]
 script = ExtResource("1_e1c6b")
+metadata/_custom_type_script = "uid://dgto6lkomd0ih"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_2o3on")
