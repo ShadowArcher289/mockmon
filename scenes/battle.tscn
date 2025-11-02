@@ -32,7 +32,13 @@ mockmon_party = [NodePath("DrippedOutRat"), NodePath("GuyInACloak"), NodePath("L
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="Options" type="HBoxContainer" parent="."]
+[node name="PlayerMockmonLocation" type="Marker2D" parent="."]
+position = Vector2(490, 756)
+
+[node name="NpcMockmonLocation" type="Marker2D" parent="."]
+position = Vector2(1438, 279)
+
+[node name="BattleOptions" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
 anchors_preset = 12
@@ -43,7 +49,7 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Options"]
+[node name="MarginContainer" type="MarginContainer" parent="BattleOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 30
@@ -51,41 +57,35 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Options/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="BattleOptions/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/normal_font_size = 50
 text = "What will ____ do?"
 
-[node name="HFlowContainer" type="HFlowContainer" parent="Options"]
+[node name="HFlowContainer" type="HFlowContainer" parent="BattleOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Fight" type="TextureButton" parent="Options/HFlowContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture_normal = ExtResource("4_a12nh")
-
-[node name="Bag(None)" type="TextureButton" parent="Options/HFlowContainer"]
+[node name="Fight" type="TextureButton" parent="BattleOptions/HFlowContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("4_a12nh")
 
-[node name="Pokemon" type="TextureButton" parent="Options/HFlowContainer"]
+[node name="Bag(None)" type="TextureButton" parent="BattleOptions/HFlowContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("4_a12nh")
 
-[node name="Run(None)" type="TextureButton" parent="Options/HFlowContainer"]
+[node name="SwitchMockmon" type="TextureButton" parent="BattleOptions/HFlowContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("4_a12nh")
 
-[node name="PlayerMockmonLocation" type="Marker2D" parent="."]
-position = Vector2(490, 756)
-
-[node name="NpcMockmonLocation" type="Marker2D" parent="."]
-position = Vector2(1438, 279)
+[node name="Run(None)" type="TextureButton" parent="BattleOptions/HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_a12nh")
 
 [node name="PlayerMonHpBar" type="ProgressBar" parent="."]
 layout_mode = 0
@@ -107,7 +107,7 @@ step = 1.0
 value = 50.0
 show_percentage = false
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="SwitchMockmonBox" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -119,34 +119,53 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="Panel" type="Panel" parent="MarginContainer"]
+[node name="Panel" type="Panel" parent="SwitchMockmonBox"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SwitchMockmonBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MockmonCard1" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("5_lpir7")]
+[node name="HBoxContainer" type="HBoxContainer" parent="SwitchMockmonBox/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MockmonCard1" parent="SwitchMockmonBox/VBoxContainer/HBoxContainer" instance=ExtResource("5_lpir7")]
 layout_mode = 2
 
-[node name="MockmonCard2" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("5_lpir7")]
+[node name="MockmonCard2" parent="SwitchMockmonBox/VBoxContainer/HBoxContainer" instance=ExtResource("5_lpir7")]
 layout_mode = 2
 
-[node name="MockmonCard3" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("5_lpir7")]
+[node name="HBoxContainer2" type="HBoxContainer" parent="SwitchMockmonBox/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MockmonCard3" parent="SwitchMockmonBox/VBoxContainer/HBoxContainer2" instance=ExtResource("5_lpir7")]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MockmonCard4" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("5_lpir7")]
+[node name="MockmonCard4" parent="SwitchMockmonBox/VBoxContainer/HBoxContainer2" instance=ExtResource("5_lpir7")]
 layout_mode = 2
 
-[node name="MockmonCard5" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("5_lpir7")]
+[node name="HBoxContainer3" type="HBoxContainer" parent="SwitchMockmonBox/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MockmonCard5" parent="SwitchMockmonBox/VBoxContainer/HBoxContainer3" instance=ExtResource("5_lpir7")]
 layout_mode = 2
 
-[node name="MockmonCard6" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("5_lpir7")]
+[node name="MockmonCard6" parent="SwitchMockmonBox/VBoxContainer/HBoxContainer3" instance=ExtResource("5_lpir7")]
 layout_mode = 2
+
+[node name="HideSwitchMockmon" type="Button" parent="SwitchMockmonBox/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[connection signal="pressed" from="BattleOptions/HFlowContainer/SwitchMockmon" to="." method="_on_switch_mockmon_pressed"]
+[connection signal="pressed" from="SwitchMockmonBox/VBoxContainer/HBoxContainer/MockmonCard1" to="." method="_on_mockmon_card_1_pressed"]
+[connection signal="pressed" from="SwitchMockmonBox/VBoxContainer/HBoxContainer/MockmonCard2" to="." method="_on_mockmon_card_2_pressed"]
+[connection signal="pressed" from="SwitchMockmonBox/VBoxContainer/HBoxContainer2/MockmonCard3" to="." method="_on_mockmon_card_3_pressed"]
+[connection signal="pressed" from="SwitchMockmonBox/VBoxContainer/HBoxContainer2/MockmonCard4" to="." method="_on_mockmon_card_4_pressed"]
+[connection signal="pressed" from="SwitchMockmonBox/VBoxContainer/HBoxContainer3/MockmonCard5" to="." method="_on_mockmon_card_5_pressed"]
+[connection signal="pressed" from="SwitchMockmonBox/VBoxContainer/HBoxContainer3/MockmonCard6" to="." method="_on_mockmon_card_6_pressed"]

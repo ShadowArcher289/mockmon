@@ -34,6 +34,10 @@ layout_mode = 2
 texture = ExtResource("1_8ady5")
 stretch_mode = 3
 
+[node name="Panel" type="Panel" parent="HBoxContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3

@@ -3,8 +3,14 @@ extends Control
 @onready var player_trainer: CharacterBody2D = $Player
 @onready var npc_trainer: Node2D = $NpcTrainer
 
+@onready var battle_options: HBoxContainer = $BattleOptions
+@onready var switch_mockmon_box: MarginContainer = $SwitchMockmonBox
+
 @onready var player_mon_hp_bar: ProgressBar = $PlayerMonHpBar
 @onready var npc_mon_hp_bar: ProgressBar = $NpcMonHpBar
+
+@onready var player_mockmon_location: Marker2D = $PlayerMockmonLocation
+@onready var npc_mockmon_location: Marker2D = $NpcMockmonLocation
 
 @onready var mockmon_card_1: Button = $MarginContainer/HBoxContainer/VBoxContainer/MockmonCard1
 @onready var mockmon_card_2: Button = $MarginContainer/HBoxContainer/VBoxContainer/MockmonCard2
@@ -17,14 +23,32 @@ extends Control
 var turn_count = 0; ## the turn count
 var battling = true;
 
+var player_move_messages : Array[String] = []; ## messages that the game will display before a move is done.
+var player_move_message_index = 0;
+
 func _ready() -> void:
-	battle(player_trainer, npc_trainer);
+	battle_options.hide();
+	
+	mockmon_card_1.current_mockmon = player_trainer.mockmon_party[0];
+	mockmon_card_2.current_mockmon = player_trainer.mockmon_party[1];
+	mockmon_card_3.current_mockmon = player_trainer.mockmon_party[2];
+	mockmon_card_4.current_mockmon = player_trainer.mockmon_party[3];
+	mockmon_card_5.current_mockmon = player_trainer.mockmon_party[4];
+	mockmon_card_6.current_mockmon = player_trainer.mockmon_party[5];
+
+	
+	battle(player_trainer, npc_trainer); # start battle automatically
 	
 	SignalBus.connect("player_done_with_battle", _end_battle_player); # connect done with battle signals
 	SignalBus.connect("npc_done_with_battle", _end_battle_npc);
 
 
 func battle(player: CharacterBody2D, npc: Node2D) -> void: ## starts a battle between the two characters
+	player_trainer.current_mockmon.show(); # set the mockmon's locations
+	npc_trainer.current_mockmon.show();
+	player_trainer.current_mockmon.global_position = player_mockmon_location.global_position;
+	npc_trainer.current_mockmon.global_position = npc_mockmon_location.global_position;
+
 	while battling:
 		player_mon_hp_bar = player_trainer.current_mockmon.currentHp;
 		player_mon_hp_bar = player_trainer.current_mockmon.currentHp;
@@ -56,11 +80,17 @@ func battle(player: CharacterBody2D, npc: Node2D) -> void: ## starts a battle be
 		turn_count += 1;
 
 func player_make_move():
-	player_trainer.current_mockmon.show();
+	battle_options.show();
+	player_move_messages = []; ## messages that the game will display before a move is done.
+	player_move_message_index = 0;
+	
+	
 	
 
-func player_switch_mon(mon_team_number: int): ## switch the current mon from selected mon in party.
+func player_switch_mon(mon_team_number: int) -> void: ## switch the current mon from selected mon in party.
+	player_move_messages.append(player_trainer.current_mockmon + " return!");
 	player_trainer.current_mockmon = player_trainer.mockmon_party[mon_team_number-1];
+	player_move_messages.append("Go " + player_trainer.current_mockmon + "!");
 	
 
 func _end_battle_player() -> void: ## player lost/quit the battle
@@ -70,3 +100,32 @@ func _end_battle_player() -> void: ## player lost/quit the battle
 func _end_battle_npc() -> void: ## npc lost/quit the battle
 	battling = false;
 	print_debug("Player Won! in [" + turn_count + "] turns!");
+
+
+func _on_switch_mockmon_pressed() -> void:
+	switch_mockmon_box.show();
+
+
+func _on_mockmon_card_1_pressed() -> void:
+	switch_mockmon_box.hide();
+	player_switch_mon(1)
+
+func _on_mockmon_card_2_pressed() -> void:
+	switch_mockmon_box.hide();
+	player_switch_mon(2);
+
+func _on_mockmon_card_3_pressed() -> void:
+	switch_mockmon_box.hide();
+	player_switch_mon(3);
+
+func _on_mockmon_card_4_pressed() -> void:
+	switch_mockmon_box.hide();
+	player_switch_mon(4);
+
+func _on_mockmon_card_5_pressed() -> void:
+	switch_mockmon_box.hide();
+	player_switch_mon(5);
+
+func _on_mockmon_card_6_pressed() -> void:
+	switch_mockmon_box.hide();
+	player_switch_mon(6);

@@ -5,6 +5,7 @@ extends Button
 @onready var mockmon_sprite: TextureRect = $HBoxContainer/MarginContainer/MockmonSprite
 @onready var mockmon_name: Label = $HBoxContainer/MarginContainer2/VBoxContainer/MockmonName
 @onready var hp_bar: ProgressBar = $HBoxContainer/MarginContainer2/VBoxContainer/HpBar
+@onready var panel: Panel = $HBoxContainer/MarginContainer/Panel
 
 func _process(_delta: float) -> void:
 	if current_mockmon != null: # update the mockmon_card for the mockmon's data
@@ -13,3 +14,8 @@ func _process(_delta: float) -> void:
 		#mockmon_sprite.texture = preload(current_mockmon.sprite);
 		mockmon_sprite.texture = preload("res://icon.svg");
 		hp_bar = current_mockmon.currentHp;
+		
+		if current_mockmon.currentHp <= 0:
+			panel.show();
+		elif current_mockmon.currentHp > 0:
+			panel.hide();
