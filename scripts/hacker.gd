@@ -1,25 +1,24 @@
 extends Node2D
 
-var rock_slam = move.new("Rock Slam", "Rock", 40, "Physical", 15, 100);
-var intimidating_stare = move.new("Intimidating Stare", "Psychic", 10, "Special", 20, 100);
-var rock_throw = move.new("Rock Throw", "Rock", 60, "Physical", 15, 90);
-var what_rocks_do = move.new("What Rocks Do", "Rock", 0, "Physical", 30, 80);
+var golisano_stench = move.new("golisano_stench", "Poison", 100, "Special", 10, 100);
+var virus_spread = move.new("virus_spread", "Electric", 70, "Special", 15, 100);
+var celsius_overdose = move.new("celsius_overdose", "Electric", 90, "Physical", 10, 90)
+var no_maidens = move.new("no_maidens", "Ground", 80, "Physical", 10, 95)
 
-const TYPE : Array[String] = ["Rock"];
+const TYPE : Array[String] = ["Electric", "Ground"];
 
-const MOCKMON_NAME = "A Literal Rock";
-const MOCKMON_SPRITE = preload("res://sprites/ALiteralRock.png");
+const MOCKMON_NAME = "Hacker";
 
-const MAX_HP = 150; # base sats
-const BASE_ATK = 100;
-const BASE_DEF = 140;
-const BASE_SPEC_ATK = 30;
-const BASE_SPEC_DEF = 45;
-const BASE_SPEED = 40;
+const MAX_HP = 90; # base stats
+const BASE_ATK = 50;
+const BASE_DEF = 70;
+const BASE_SPEC_ATK = 130;
+const BASE_SPEC_DEF = 110;
+const BASE_SPEED = 5;
 
-const WEAKNESSES: Array[String] = ["Water", "Ground", "Grass", "Fighting", "Steel"];
-const RESISTANCES: Array[String] = ["Normal", "Flying", "Poison", "Fire"];
-const IMMUNITIES: Array[String] = [];
+const WEAKNESSES: Array[String] = ["Water", "Ground", "Grass", "Ice"];
+const RESISTANCES: Array[String] = ["Rock","Flying", "Poison", "Steel"];
+const IMMUNITIES: Array[String] = ["Electric"];
 
 var moves: Array[move];
 
@@ -27,7 +26,7 @@ var currentHp = MAX_HP;
 var death: bool = false;
 
 func _ready() -> void:
-	moves = [rock_slam, intimidating_stare, rock_throw, what_rocks_do];
+	moves = [golisano_stench, virus_spread, celsius_overdose, no_maidens];
 
 func use_move(move_choice: move, target: Node2D): ## Use a move on a given target given a move 
 	if target.has_method("take_damage"):
