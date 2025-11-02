@@ -15,6 +15,7 @@ var resistances : Array[String]
 var immunities : Array[String]
 var moves : Array[move]
 var current_hp : int
+var death : bool
 
 ## Create a new move (Type, AtkDmg, Category, PP, Accuracy);
 func _init(input_name : String, input_sprite : String, input_type : Array[String], input_max_hp : int, input_base_atk : int, input_base_def : int, input_base_spec_atk: int, input_base_spec_def: int, input_speed :int, input_weaknesses : Array[String], input_resistances : Array[String], input_immunities : Array[String], input_moves : Array[move], input_current_hp : int ) -> void:
@@ -33,13 +34,12 @@ func _init(input_name : String, input_sprite : String, input_type : Array[String
 	self.moves = input_moves;
 	self.current_hp = input_current_hp;
 	
-func use_move(move_number: int, target: Node2D): ## Use a move on a given target given the move number
-	var target_move = moves[move_number-1];
+func use_move(move_choice: move, target: Node2D): ## Use a move on a given target given the move number
 	if target.has_method("take_damage"):
-		if target_move.is_category("special"):
-			target.take_damage(base_spec_atk, target_move);
-		elif target_move.is_category("physical"):
-			target.take_damage(base_atk, target_move);
+		if move_choice.is_category("special"):
+			target.take_damage(base_spec_atk, move_choice);
+		elif move_choice.is_category("physical"):
+			target.take_damage(base_atk, move_choice);
 
 func get_move(move_number: int): ## Returns the mockmon's move
 	return moves[move_number-1];
@@ -57,4 +57,4 @@ func take_damage(enemy_atk: int, move_used: move): ## The Mockmon takes damage
 	current_hp -= damage;
 	
 	if current_hp <= 0:
-		pass;
+		death = true;

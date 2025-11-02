@@ -24,6 +24,7 @@ const IMMUNITIES: Array[String] = [];
 var moves: Array[move];
 
 var currentHp = MAX_HP;
+var death : bool
 
 func _ready() -> void:
 	moves = [rock_slam, intimidating_stare, rock_throw, what_rocks_do];
@@ -49,4 +50,4 @@ func take_damage(enemy_atk: int, move_used: move): ## The Mockmon takes damage
 	currentHp -= damage;
 	
 	if currentHp <= 0:
-		pass;
+		death = true;
