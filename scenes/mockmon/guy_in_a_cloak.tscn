@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7uwuvrwffju5"]
 
-[ext_resource type="Script" uid="uid://cl8sg7blp2lxa" path="res://scenes/mockmon/guy_in_a_cloak.gd" id="1_j6mkc"]
+[ext_resource type="Script" uid="uid://cl8sg7blp2lxa" path="res://scripts/guy_in_a_cloak.gd" id="1_j6mkc"]
 [ext_resource type="Texture2D" uid="uid://gb0yq3wkldju" path="res://sprites/GuyInACloak.png" id="2_j6mkc"]
 
 [node name="GuyInACloak" type="Node2D"]

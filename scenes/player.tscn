@@ -1,7 +1,7 @@
 [gd_scene load_steps=32 format=3 uid="uid://5k07bj3wni8h"]
 
 [ext_resource type="Texture2D" uid="uid://vfj82j4iwy7o" path="res://sprites/Main Character Male.png" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://dj7sk3k2b4kxh" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://dj7sk3k2b4kxh" path="res://player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://c0jarsdt2wjtd" path="res://scenes/mockmon/literal_rock.tscn" id="3_dqkch"]
 [ext_resource type="PackedScene" uid="uid://blx24epx1ubvt" path="res://scenes/mockmon/dripped_out_rat.tscn" id="4_qlg0r"]
 
