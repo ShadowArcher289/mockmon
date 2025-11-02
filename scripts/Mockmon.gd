@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name Mockmon
 
 var mockmon_name : String;
@@ -43,6 +43,9 @@ func use_move(move_number: int, target: Node2D): ## Use a move on a given target
 
 func get_move(move_number: int): ## Returns the mockmon's move
 	return moves[move_number-1];
+
+func get_moves() :
+	return moves;
 
 func take_damage(enemy_atk: int, move_used: move): ## The Mockmon takes damage
 	var damage = 0;

@@ -1,8 +1,8 @@
-extends Mockmon
+extends Node2D
 var fling_drip = move.new("Steel", 40, "Physical", 10, 90);
 var sick_burn = move.new("Fire", 30, "Special", 20, 100);
 var do_a_flip = move.new("Psychic", 40, "Special", 10, 90);
-#var fling_drip = move.new("Steel", 40, "Physical", 10, 90);
+var aura_farm = move.new("Fire", 80, "Physical", 10, 90);
 
 const TYPE : Array[String] = ["Steel", "Fire"];
 
@@ -17,10 +17,11 @@ const WEAKNESSES: Array[String] = ["Water", "Ground", "Fighting"];
 const RESISTANCES: Array[String] = ["Normal", "Flying", "Psychic", "Dragon"];
 const IMMUNITIES: Array[String] = ["Poison"];
 
+var moves
 var currentHp = MAX_HP;
 
 func _ready() -> void:
-	moves = [fling_drip, sick_burn, do_a_flip];
+	moves = [fling_drip, sick_burn, do_a_flip, aura_farm];
 
 func use_move(move_number: int, target: Node2D): ## Use a move on a given target given the move number
 	var target_move = moves[move_number-1];

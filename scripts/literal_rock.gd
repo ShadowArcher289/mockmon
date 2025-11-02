@@ -1,4 +1,5 @@
-extends Mockmon
+extends Node2D
+
 var rock_slam = move.new("Rock", 40, "Physical", 15, 100);
 var intimidating_stare = move.new("Psychic", 10, "Special", 20, 100);
 var rock_throw = move.new("Rock", 60, "Physical", 15, 90);
@@ -16,6 +17,7 @@ const BASE_SPEED = 50;
 const WEAKNESSES: Array[String] = ["Water", "Ground", "Grass", "Fighting", "Steel"];
 const RESISTANCES: Array[String] = ["Normal", "Flying", "Poison", "Fire"];
 const IMMUNITIES: Array[String] = [];
+var moves
 
 var currentHp = MAX_HP;
 

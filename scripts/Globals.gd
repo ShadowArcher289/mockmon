@@ -10,10 +10,10 @@ func weak_calc(moveType: String, weaknesses: Array[String], resistances: Array[S
 	var count:int = 0
 	if(immunities.has(moveType)) :
 		return 0
-	for i in range(weaknesses.size()) :
+	for i in range(weaknesses.size() - 1) :
 		if weaknesses[i] == moveType:
 			count+=1
-	for i in range(resistances.size()) :
+	for i in range(resistances.size() - 1) :
 		if resistances[i] == moveType:
 			count -=1
 	if count == 1 :
@@ -27,13 +27,13 @@ func weak_calc(moveType: String, weaknesses: Array[String], resistances: Array[S
 	else:
 		return 1
 
-func is_weak(moveType: String, mon: Mockmon) -> bool: 
+func is_weak(moveType: String, mon: Node2D) -> bool: 
 	var count:int = 0
-	for i in range(mon.weaknesses.size()) :
-		if mon.weaknesses[i] == moveType:
+	for i in range(mon.WEAKNESSES.size() - 1) :
+		if mon.WEAKNESSES[i] == moveType:
 			count+=1
-	for i in range(mon.resistances.size()) :
-		if mon.resistances[i] == moveType:
+	for i in range(mon.RESISTANCES.size()  - 1) :
+		if mon.RESISTANCES[i] == moveType:
 			count -=1
 	if count > 0 :
 		return true
@@ -41,13 +41,13 @@ func is_weak(moveType: String, mon: Mockmon) -> bool:
 		return false
 	return false
 
-func is_resist(moveType: String, mon: Mockmon) -> bool: 
+func is_resist(moveType: String, mon: Node2D) -> bool: 
 		var count: int = 0
-		for i in range(mon.resistances.size()) :
-			if mon.resistances[i] == moveType :
+		for i in range(mon.RESISTANCES.size() -1 ) :
+			if mon.RESISTANCES[i] == moveType :
 				count +=1
-		for i in range(mon.weaknesses.size()) :
-			if mon.resistances[i] == moveType :
+		for i in range(mon.WEAKNESSES.size() - 1) :
+			if mon.RESISTANCES[i] == moveType :
 				count -=1
 		if count > 0 :
 			return true
@@ -57,11 +57,11 @@ func is_resist(moveType: String, mon: Mockmon) -> bool:
 		
 func is_neutral(moveType: String, mon : Mockmon) -> bool: 
 		var count: int = 0
-		for i in range(mon.resistances.size()) :
-			if mon.resistances[i] == moveType :
+		for i in range(mon.RESISTANCES.size() - 1) :
+			if mon.RESISTANCES[i] == moveType :
 				count +=1
-		for i in range(mon.weaknesses.size()) :
-			if mon.resistances[i] == moveType :
+		for i in range(mon.WEAKNESSES.size() - 1) :
+			if mon.RESISTANCES[i] == moveType :
 				count -=1
 		if count == 0 :
 			return true
