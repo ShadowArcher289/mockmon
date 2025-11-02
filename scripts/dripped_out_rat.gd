@@ -1,8 +1,8 @@
 extends Node2D
-var fling_drip = move.new("Steel", 40, "Physical", 10, 90);
-var sick_burn = move.new("Fire", 30, "Special", 20, 100);
-var do_a_flip = move.new("Psychic", 40, "Special", 10, 90);
-var aura_farm = move.new("Fire", 80, "Physical", 10, 90);
+var fling_drip = move.new("Fling Drip", "Steel", 40, "Physical", 10, 90);
+var sick_burn = move.new("Sick Burn", "Fire", 30, "Special", 20, 100);
+var do_a_flip = move.new("Do A Flip", "Psychic", 40, "Special", 10, 90);
+var aura_farm = move.new("Aura Farm", "Fire", 80, "Physical", 10, 90);
 
 const TYPE : Array[String] = ["Steel", "Fire"];
 

@@ -1,9 +1,9 @@
 extends Node2D
 
-var rock_slam = move.new("Rock", 40, "Physical", 15, 100);
-var intimidating_stare = move.new("Psychic", 10, "Special", 20, 100);
-var rock_throw = move.new("Rock", 60, "Physical", 15, 90);
-var what_rocks_do = move.new("Rock", 0, "Physical", 30, 80);
+var rock_slam = move.new("Rock Slam", "Rock", 40, "Physical", 15, 100);
+var intimidating_stare = move.new("Intimidating Stare", "Psychic", 10, "Special", 20, 100);
+var rock_throw = move.new("Rock Throw", "Rock", 60, "Physical", 15, 90);
+var what_rocks_do = move.new("What Rocks Do", "Rock", 0, "Physical", 30, 80);
 
 const TYPE : Array[String] = ["Rock"];
 

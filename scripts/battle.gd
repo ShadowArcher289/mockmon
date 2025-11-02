@@ -111,8 +111,10 @@ func player_make_move():
 	player_move_messages = []; ## messages that the game will display before a move is done.
 	player_move_message_index = 0;
 	
-	
-	
+
+func _on_fight_pressed() -> void:
+	pass # Replace with function body.
+
 
 func player_switch_mon(mon_team_number: int) -> void: ## switch the current mon from selected mon in party.
 	if mon_team_number <= player_trainer.mockmon_party.size(): # only run if the inputted team number is valid given the team size

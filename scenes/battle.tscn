@@ -164,6 +164,7 @@ text = "Back"
 anchor_mode = 0
 zoom = Vector2(0.25, 0.25)
 
+[connection signal="pressed" from="UiBody/BattleOptions/HFlowContainer/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="UiBody/BattleOptions/HFlowContainer/SwitchMockmon" to="." method="_on_switch_mockmon_pressed"]
 [connection signal="pressed" from="UiBody/SwitchMockmonBox/VBoxContainer/HBoxContainer/MockmonCard1" to="." method="_on_mockmon_card_1_pressed"]
 [connection signal="pressed" from="UiBody/SwitchMockmonBox/VBoxContainer/HBoxContainer/MockmonCard2" to="." method="_on_mockmon_card_2_pressed"]
